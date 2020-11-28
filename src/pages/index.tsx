@@ -11,7 +11,7 @@ const Home: React.FC = () => {
         links={[
           { title: 'About', to: '/' },
           { title: 'Projects', to: '/projects' },
-          { title: 'Blogs', to: '/blog' },
+          { title: 'Blog', to: '/blog' },
         ]}
       />
       <div className="pl-3 pt-4">Hello world!</div>
