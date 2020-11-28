@@ -11,17 +11,10 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         postCssPlugins: [
-          require("tailwindcss"),
-          require("./tailwind.config.js"),
+          require('tailwindcss'),
+          require('./tailwind.config.js'),
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-purgecss`,
-    //   options: {
-    //     tailwind: true,
-    //     develop: false,
-    //   },
-    // },
   ],
-};
+}

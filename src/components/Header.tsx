@@ -10,7 +10,7 @@ const NavLink: React.FC<LinkProps> = ({ to, children }) => {
   return (
     <li>
       <Link
-        className="px-2 py-1 font-medium text-xl text-gray-500 lowercase hover:text-orange-400"
+        className="px-2 py-1 font-medium text-xl text-gray-600 lowercase hover:text-orange-400"
         activeClassName="text-orange-400 border-b-2 border-orange-400"
         to={to}
       >
@@ -24,7 +24,7 @@ const MenuLink: React.FC<LinkProps> = ({ to, children }) => {
   return (
     <li>
       <Link
-        className="block px-3 py-2 text-base font-medium lowercase hover:bg-gray-500 hover:text-white"
+        className="block px-3 py-2 text-base font-medium lowercase hover:bg-gray-600 hover:text-white"
         activeClassName="text-white hover:text-white bg-orange-400 hover:bg-orange-400"
         to={to}
       >
@@ -93,9 +93,10 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
   const [isMenuHidden, setMenuHidden] = useState(true)
 
   return (
-    <nav className="border-b-2 border-orange-400">
-      <div className="container mx-auto">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <header className="border-b-2 border-orange-400">
+      <div className="mx-auto">
+        {/* <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"> */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
           <div className="relative flex items-center justify-between h-12 sm:h-16">
             <h1 className="text-2xl">Darko Trifunovski</h1>
             <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
@@ -104,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
 
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
               <div className="flex-shrink-0 flex items-center"></div>
-              <div className="hidden sm:block sm:ml-6">
+              <nav className="hidden sm:block sm:ml-6">
                 <ul className="list-none flex space-x-4">
                   {links.map(link => (
                     <NavLink to={link.to} key={link.to + link.title}>
@@ -112,12 +113,12 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
                     </NavLink>
                   ))}
                 </ul>
-              </div>
+              </nav>
             </div>
           </div>
         </div>
 
-        <div className={clsx({ 'sm:hidden': true, hidden: isMenuHidden })}>
+        <nav className={clsx({ 'sm:hidden': true, hidden: isMenuHidden })}>
           <ul className="list-none px-2 pt-2 pb-3 space-y-1 border-t-2 border-orange-400">
             {links.map(link => (
               <MenuLink to={link.to} key={link.to + link.title}>
@@ -125,9 +126,9 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
               </MenuLink>
             ))}
           </ul>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   )
 }
 
