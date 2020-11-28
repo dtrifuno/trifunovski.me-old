@@ -5,7 +5,11 @@ module.exports = {
   purge: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        '7xl': '80rem',
+      },
+    },
   },
   variants: {
     extend: {},

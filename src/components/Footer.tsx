@@ -47,9 +47,9 @@ const IconBar: React.FC = () => {
 const Footer: React.FC = () => {
   return (
     <footer className="border-t-2 border-orange-400 box-border">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between space-x-2">
-          <div className="py-2 text-center text-gray-700">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between space-x-4 ">
+          <div className="md:text-lg text-center text-gray-700 mb-2 md:mb-0">
             Darko Trifunovski © 2020&ndash;2021. Built with Gatsby&mdash;source
             code available on{' '}
             <a
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
             </a>
             .
           </div>
-          <div className="py-2">
+          <div className="my-3 md:my-4">
             <IconBar />
           </div>
         </div>

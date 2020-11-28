@@ -95,10 +95,9 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
   return (
     <header className="border-b-2 border-orange-400">
       <div className="mx-auto">
-        {/* <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"> */}
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
-          <div className="relative flex items-center justify-between h-12 sm:h-16">
-            <h1 className="text-2xl">Darko Trifunovski</h1>
+          <div className="relative flex items-center justify-between sm:h-16">
+            <h1 className="text-2xl py-2">Darko Trifunovski</h1>
             <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
               <MenuButton onClick={() => setMenuHidden(!isMenuHidden)} />
             </div>
