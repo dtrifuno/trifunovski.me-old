@@ -37,13 +37,26 @@ module.exports = {
         path: `${__dirname}/content/projects/`,
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-yaml`,
+    `gatsby-plugin-sharp`,
+    // gatsby-remark-images should be run both as plugin of gatsby-plugin-mdx and gatsby itself, do not use one to set options
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
           default: require.resolve('./src/templates/Default.tsx'),
         },
-        gatsbyRemarkPlugins: [`gatsby-remark-autolink-headers`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1035,
+            },
+          },
+        ],
       },
     },
   ],
