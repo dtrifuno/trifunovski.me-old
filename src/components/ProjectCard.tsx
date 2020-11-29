@@ -14,7 +14,7 @@ const DemoButton: React.FC<ButtonProps> = ({ href }) => {
   return (
     <a
       href={href}
-      className="text-white py-2 px-5 text-lg font-semibold bg-orange-400 inline-block border border-orange-400 hover:bg-orange-500 hover:border-orange-500"
+      className="text-white py-2 px-5 text-lg font-semibold bg-orange-400 inline-block border border-orange-400 hover:bg-orange-500 hover:border-orange-500 my-2"
     >
       <div className="flex flex-row space-x-2 items-center">
         <span>Demo</span>
@@ -28,7 +28,7 @@ const GithubButton: React.FC<ButtonProps> = ({ href }) => {
   return (
     <a
       href={href}
-      className="text-black py-2 px-5 text-lg font-semibold bg-gray-500 inline-block border border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600"
+      className="text-black py-2 px-5 text-lg font-semibold bg-gray-500 inline-block border border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600 my-2 mx-2 md:mx-5"
     >
       <div className="flex flex-row space-x-2 items-center">
         <span>Source</span>
@@ -56,7 +56,7 @@ const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
   const { fluid } = project.thumbnail.childImageSharp
 
   return (
-    <div className="py-4 lg:py-3 px-3">
+    <div className="py-4 lg:py-3">
       <div className="container m-auto px-6 py-3 border">
         <div
           className={clsx('lg:flex justify-between items-center', {
@@ -64,9 +64,9 @@ const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
           })}
         >
           <div className="lg:w-6/12 lg:p-0 p-7">
-            <h1 className="text-3xl font-bold leading-tight my-1 lg:my-2 capitalize text-center lg:text-left">
+            <h2 className="text-2xl font-bold leading-tight my-0 lg:my-2 capitalize text-center lg:text-left">
               {title}
-            </h1>
+            </h2>
 
             <div>
               <ul className="list-none flex flex-row flex-wrap mt-3 mb-1 justify-center lg:justify-start">
@@ -78,7 +78,7 @@ const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
 
             <p className="text-xl text-gray-700">{description}</p>
 
-            <div className="py-5 space-x-4 flex justify-center lg:justify-start">
+            <div className="py-3 flex flex-row flex-wrap justify-center lg:justify-start">
               {demo_url && <DemoButton href={demo_url} />}
               {github_url && <GithubButton href={github_url} />}
             </div>
