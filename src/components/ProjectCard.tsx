@@ -14,7 +14,7 @@ const DemoButton: React.FC<ButtonProps> = ({ href }) => {
   return (
     <a
       href={href}
-      className="text-white py-2 px-5 text-lg font-semibold bg-orange-400 inline-block border border-orange-400 hover:bg-orange-500 hover:border-orange-500 my-2"
+      className="text-white py-2 px-5 text-lg font-semibold bg-orange-400 inline-block border border-orange-400 hover:bg-orange-500 hover:border-orange-500 my-1"
     >
       <div className="flex flex-row space-x-2 items-center">
         <span>Demo</span>
@@ -28,7 +28,7 @@ const GithubButton: React.FC<ButtonProps> = ({ href }) => {
   return (
     <a
       href={href}
-      className="text-black py-2 px-5 text-lg font-semibold bg-gray-500 inline-block border border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600 my-2 mx-2 md:mx-5"
+      className="text-black py-2 px-5 text-lg font-semibold bg-gray-500 inline-block border border-gray-500 text-white hover:bg-gray-600 hover:border-gray-600 my-1 mx-2 md:mx-5"
     >
       <div className="flex flex-row space-x-2 items-center">
         <span>Source</span>
@@ -64,7 +64,7 @@ const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
           })}
         >
           <div className="lg:w-6/12 lg:p-0 p-7">
-            <h2 className="text-2xl font-bold leading-tight my-0 lg:my-2 capitalize text-center lg:text-left">
+            <h2 className="text-2xl md:text-3xl lg:text-2xl font-bold leading-tight my-0 lg:my-2 capitalize text-center lg:text-left">
               {title}
             </h2>
 
@@ -76,7 +76,9 @@ const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
               </ul>
             </div>
 
-            <p className="text-xl text-gray-700">{description}</p>
+            <p className="text-xl text-gray-700 text-justify md:text-left">
+              {description}
+            </p>
 
             <div className="py-3 flex flex-row flex-wrap justify-center lg:justify-start">
               {demo_url && <DemoButton href={demo_url} />}

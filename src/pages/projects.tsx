@@ -2,13 +2,10 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 import ProjectCard from '../components/ProjectCard'
-// import ProjectBox from '../components/project-box'
-// import SEO from '../components/seo'
 import { useProjects } from '../hooks/useProjects'
 
 const ProjectsPage: React.FC = () => {
   const projects = useProjects()
-  console.log(projects)
   return (
     <Layout>
       {/* <SEO title="Projects" /> */}
