@@ -40,15 +40,11 @@ const components: MDXProviderComponents = {
 
 const Default: React.FC = ({ children }) => {
   return (
-    <>
-      <Layout>
-        <div className="container mx-auto py-4 lg:py-8 px-6">
-          <article className="mx-auto prose md:prose-lg xl:prose-xl max-w-4xl">
-            <MDXProvider components={components}>{children}</MDXProvider>
-          </article>
-        </div>
-      </Layout>
-    </>
+    <Layout>
+      <article className="mx-auto prose prose-orange md:prose-lg xl:prose-xl max-w-4xl">
+        <MDXProvider components={components}>{children}</MDXProvider>
+      </article>
+    </Layout>
   )
 }
 

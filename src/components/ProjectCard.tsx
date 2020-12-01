@@ -14,7 +14,7 @@ const DemoButton: React.FC<ButtonProps> = ({ href }) => {
   return (
     <a
       href={href}
-      className="text-white py-2 px-5 text-lg font-semibold bg-orange-400 inline-block border border-orange-400 hover:bg-orange-500 hover:border-orange-500 my-1"
+      className="text-white py-2 px-5 text-lg font-semibold bg-orange-500 inline-block border border-orange-500 hover:bg-orange-600 hover:border-orange-600 my-1"
     >
       <div className="flex flex-row space-x-2 items-center">
         <span>Demo</span>

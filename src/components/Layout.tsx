@@ -15,7 +15,9 @@ const Layout: React.FC = ({ children }) => {
           { title: 'Blog', to: '/blog' },
         ]}
       />
-      <main className="mb-auto">{children}</main>
+      <main className="mb-auto">
+        <div className="container mx-auto py-4 lg:py-8 px-6">{children}</div>
+      </main>
       <Footer />
     </div>
   )

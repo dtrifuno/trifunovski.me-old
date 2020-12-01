@@ -12,28 +12,28 @@ const IconBar: React.FC = () => {
         }}
       >
         <a
-          className="hover:text-orange-400"
+          className="hover:text-orange-600"
           href="https://github.com/dtrifuno"
           aria-label="Visit my GitHub profile"
         >
           <FaGithub />
         </a>
         <a
-          className="hover:text-orange-400"
+          className="hover:text-orange-600"
           href="https://www.linkedin.com/in/darko-trifunovski/"
           aria-label="Visit my LinkedIn profile"
         >
           <FaLinkedin />
         </a>
         <a
-          className="hover:text-orange-400"
+          className="hover:text-orange-600"
           href="https://twitter.com/dtrifuno"
           aria-label="Visit my Twitter profile"
         >
           <FaTwitter />
         </a>
         <a
-          className="hover:text-orange-400"
+          className="hover:text-orange-600"
           href="/rss.xml"
           aria-label="Subscribe to my RSS feed"
         >
@@ -46,14 +46,14 @@ const IconBar: React.FC = () => {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="border-t-2 border-orange-400 box-border mt-2">
+    <footer className="border-t-2 border-orange-600 box-border mt-2">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between space-x-4 ">
           <div className="md:text-lg text-center text-gray-700 mb-2 md:mb-0">
             Darko Trifunovski © 2020&ndash;2021. Built with Gatsby&mdash;source
             code available on{' '}
             <a
-              className="text-orange-500 underline"
+              className="text-orange-600 underline"
               href="https://github.com/dtrifuno/trifunovski.me"
             >
               Github

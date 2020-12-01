@@ -9,19 +9,17 @@ const ProjectsPage: React.FC = () => {
   return (
     <Layout>
       {/* <SEO title="Projects" /> */}
-      <div className="container mx-auto py-4 lg:py-6 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-2 lg:mb-4">
-            Projects
-          </h2>
-          {projects.map((project, idx) => (
-            <ProjectCard
-              project={project}
-              reversed={idx % 2 == 1}
-              key={project.id}
-            />
-          ))}
-        </div>
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl lg:text-4xl font-bold mb-2 lg:mb-4">
+          Projects
+        </h2>
+        {projects.map((project, idx) => (
+          <ProjectCard
+            project={project}
+            reversed={idx % 2 == 1}
+            key={project.id}
+          />
+        ))}
       </div>
     </Layout>
   )

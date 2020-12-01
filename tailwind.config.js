@@ -9,6 +9,18 @@ module.exports = {
       maxWidth: {
         '7xl': '80rem',
       },
+      // typography: {
+      //   DEFAULT: {
+      //     css: {
+      //       a: {
+      //         color: '#f6ad55',
+      //         'font-weight': 500,
+      //         'text-decoration': 'underline',
+      //         '&:hover': {},
+      //       },
+      //     },
+      //   },
+      // },
     },
   },
   variants: {
