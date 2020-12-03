@@ -12,7 +12,7 @@ const BlogEntry: React.FC<BlogEntryProps> = ({ entry }) => {
   const { title, subtitle, date } = entry.frontmatter
   const { slug } = entry.fields
   return (
-    <li className="text-lg sm:text-xl  py-3">
+    <li className="text-lg sm:text-xl py-3">
       <Date
         isoString={date}
         dateFormat="MMM do, yyyy"

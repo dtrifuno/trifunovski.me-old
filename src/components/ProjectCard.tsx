@@ -40,7 +40,7 @@ const GithubButton: React.FC<ButtonProps> = ({ href }) => {
 
 const Tag: React.FC = ({ children }) => {
   return (
-    <li className="border font-semibold whitespace-no-wrap py-1 px-2 mr-2 mb-2">
+    <li className="border text-sm font-semibold whitespace-no-wrap py-1 px-2 mr-1 mb-2">
       {children}
     </li>
   )
@@ -76,9 +76,7 @@ const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
               </ul>
             </div>
 
-            <p className="text-xl text-gray-700 text-justify md:text-left">
-              {description}
-            </p>
+            <p className="text-gray-700 text-justify text-lg">{description}</p>
 
             <div className="py-3 flex flex-row flex-wrap justify-center lg:justify-start">
               {demo_url && <DemoButton href={demo_url} />}

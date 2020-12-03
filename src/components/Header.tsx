@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
   const [isMenuHidden, setMenuHidden] = useState(true)
 
   return (
-    <header className="border-b-2 border-orange-600 mb-2">
+    <header className="border-b-2 border-orange-600">
       <div className="mx-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
           <div className="relative flex items-center justify-between sm:h-16">

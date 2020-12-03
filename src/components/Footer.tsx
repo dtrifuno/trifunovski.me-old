@@ -46,7 +46,7 @@ const IconBar: React.FC = () => {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="border-t-2 border-orange-600 box-border mt-2">
+    <footer className="border-t-2 border-orange-600">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between space-x-4 ">
           <div className="md:text-lg text-center text-gray-700 mb-2 md:mb-0">

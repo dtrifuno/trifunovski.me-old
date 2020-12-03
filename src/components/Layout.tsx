@@ -16,7 +16,8 @@ const Layout: React.FC = ({ children }) => {
         ]}
       />
       <main className="mb-auto">
-        <div className="container mx-auto py-4 lg:py-8 px-6">{children}</div>
+        {/* <div className="container mx-auto py-4 lg:py-8 px-6">{children}</div> */}
+        <div className="px-6">{children}</div>
       </main>
       <Footer />
     </div>
