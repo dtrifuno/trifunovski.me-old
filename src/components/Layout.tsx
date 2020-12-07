@@ -10,7 +10,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <div className={clsx('flex', 'flex-col', 'h-screen', 'justify-between')}>
       <Header
-        className={clsx('border-b-2', 'border-orange-600')}
+        className={clsx('border-b-2', 'border-primary-500')}
         links={[
           { title: 'About', to: '/' },
           { title: 'Projects', to: '/projects' },
@@ -20,7 +20,7 @@ const Layout: React.FC = ({ children }) => {
       <main className={clsx('mb-auto')}>
         <div className={clsx('px-6')}>{children}</div>
       </main>
-      <Footer className={clsx('border-t-2', 'border-orange-600')} />
+      <Footer className={clsx('border-t-2', 'border-primary-500')} />
     </div>
   )
 }

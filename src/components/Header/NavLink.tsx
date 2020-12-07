@@ -18,12 +18,12 @@ const NavLink: React.FC<Props> = ({ to, className, children }) => {
           'text-xl',
           'text-gray-600',
           'lowercase',
-          'hover:text-orange-600'
+          'hover:text-primary-500'
         )}
         activeClassName={clsx(
-          'text-orange-600',
+          'text-primary-500',
           'border-b-2',
-          'border-orange-600'
+          'border-primary-500'
         )}
         to={to}
       >

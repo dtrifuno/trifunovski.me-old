@@ -37,7 +37,7 @@ const Paginator: React.FC<Props> = ({ pageContext, url, className }) => {
     >
       {prevLink ? (
         <Link
-          className={clsx('text-orange-600', 'hover:underline')}
+          className={clsx('text-primary-500', 'hover:underline')}
           to={prevLink}
         >
           « Previous
@@ -48,7 +48,7 @@ const Paginator: React.FC<Props> = ({ pageContext, url, className }) => {
       {` - ${currentPage} - `}
       {nextLink ? (
         <Link
-          className={clsx('text-orange-600', 'hover:underline')}
+          className={clsx('text-primary-500', 'hover:underline')}
           to={nextLink}
         >
           Next »

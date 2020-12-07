@@ -20,12 +20,12 @@ const DemoButton: React.FC<ButtonProps> = ({ href }) => {
         'px-5',
         'text-lg',
         'font-semibold',
-        'bg-orange-500',
+        'bg-primary-400',
         'inline-block',
         'border',
-        'border-orange-500',
-        'hover:bg-orange-600',
-        'hover:border-orange-600',
+        'border-primary-400',
+        'hover:bg-primary-500',
+        'hover:border-primary-500',
         'my-1'
       )}
     >

@@ -26,28 +26,28 @@ const IconBar: React.FC<Props> = ({ className }) => {
         }}
       >
         <a
-          className={clsx('hover:text-orange-600')}
+          className={clsx('hover:text-primary-500')}
           href="https://github.com/dtrifuno"
           aria-label="Visit my GitHub profile"
         >
           <FaGithub />
         </a>
         <a
-          className={clsx('hover:text-orange-600')}
+          className={clsx('hover:text-primary-500')}
           href="https://www.linkedin.com/in/darko-trifunovski/"
           aria-label="Visit my LinkedIn profile"
         >
           <FaLinkedin />
         </a>
         <a
-          className={clsx('hover:text-orange-600')}
+          className={clsx('hover:text-primary-500')}
           href="https://twitter.com/dtrifuno"
           aria-label="Visit my Twitter profile"
         >
           <FaTwitter />
         </a>
         <a
-          className={clsx('hover:text-orange-600')}
+          className={clsx('hover:text-primary-500')}
           href="/rss.xml"
           aria-label="Subscribe to my RSS feed"
         >

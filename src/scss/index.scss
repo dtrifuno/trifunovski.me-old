@@ -8,8 +8,21 @@ html {
 
 .hide-svg {
   svg {
-    visibility: hidden;
-    height: 0px;
-    width: 0px;
+    @apply hidden;
+  }
+  // svg {
+  //   visibility: hidden;
+  //   height: 0px;
+  //   width: 0px;
+  // };
+}
+
+.prose {
+  a {
+    @apply no-underline text-primary-500;
+
+    &:hover {
+      @apply underline;
+    }
   }
 }

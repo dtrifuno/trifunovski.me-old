@@ -1,3 +1,6 @@
+const { colors } = require('tailwindcss/defaultTheme')
+
+
 module.exports = {
   future: {
     purgeLayersByDefault: true,
@@ -5,22 +8,14 @@ module.exports = {
   purge: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
   darkMode: false,
   theme: {
+    colors: {
+      ...colors,
+      primary: colors.orange,
+    },
     extend: {
       maxWidth: {
         '7xl': '80rem',
       },
-      // typography: {
-      //   DEFAULT: {
-      //     css: {
-      //       a: {
-      //         color: '#f6ad55',
-      //         'font-weight': 500,
-      //         'text-decoration': 'underline',
-      //         '&:hover': {},
-      //       },
-      //     },
-      //   },
-      // },
     },
   },
   variants: {

@@ -18,14 +18,14 @@ const MenuLink: React.FC<Props> = ({ to, className, children }) => {
           'text-base',
           'font-medium',
           'lowercase',
-          'hover:bg-gray-600',
+          'hover:bg-gray-500',
           'hover:text-white'
         )}
         activeClassName={clsx(
           'text-white',
           'hover:text-white',
-          'bg-orange-600',
-          'hover:bg-orange-600'
+          'bg-primary-500',
+          'hover:bg-primary-500'
         )}
         to={to}
       >

@@ -18,7 +18,7 @@ const MenuButton: React.FC<Props> = ({ onClick }) => {
         'p-2',
         'rounded-md',
         'hover:text-white',
-        'hover:bg-orange-600',
+        'hover:bg-primary-500',
         'focus:outline-none',
         'focus:ring-2',
         'focus:ring-inset',

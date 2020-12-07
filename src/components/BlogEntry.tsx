@@ -22,7 +22,7 @@ const BlogEntry: React.FC<BlogEntryProps> = ({ entry }) => {
       <div>
         <Link
           className={clsx(
-            'text-orange-600',
+            'text-primary-500',
             'hover:underline',
             'font-semibold'
           )}

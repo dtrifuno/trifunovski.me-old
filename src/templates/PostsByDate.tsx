@@ -21,11 +21,11 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
   return (
     <Layout>
       <div className={clsx('max-w-4xl', 'mx-auto', 'my-3', 'md:my-5')}>
-        <h2 className={clsx('text-3xl', 'lg:text-4xl', 'font-bold', 'mb-1')}>
+        <h2 className={clsx('text-3xl', 'lg:text-4xl', 'font-bold', 'mb-0')}>
           Recent Posts
         </h2>
         <Link
-          className={clsx('text-xl', 'text-orange-600', 'hover:underline')}
+          className={clsx('text-xl', 'text-primary-500', 'hover:underline')}
           to="/tags"
         >
           (view posts by tag instead)

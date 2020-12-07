@@ -76,7 +76,7 @@ const BlogPost: React.FC<Props> = props => {
             <div
               className={clsx(
                 'prose',
-                'prose-orange',
+                'prose-primary',
                 'md:prose-lg',
                 'max-w-none'
               )}

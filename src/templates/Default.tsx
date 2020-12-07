@@ -46,7 +46,7 @@ const Default: React.FC = ({ children }) => {
           className={clsx(
             'mx-auto',
             'prose',
-            'prose-orange',
+            'prose-primary',
             'prose-lg',
             'max-w-4xl'
           )}

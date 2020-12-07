@@ -5,67 +5,7 @@ import MenuLink from './MenuLink'
 import MenuButton from './MenuButton'
 import NavLink from './NavLink'
 
-// interface MenuButtonProps {
-//   onClick?:
-//     | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
-//     | undefined
-// }
-
-// const MenuButton: React.FC<MenuButtonProps> = ({ onClick }) => {
-//   return (
-//     <button
-//       className={clsx(
-//         'inline-flex',
-//         'items-center',
-//         'justify-center',
-//         'p-2',
-//         'rounded-md',
-//         'hover:text-white',
-//         'hover:bg-orange-600',
-//         'focus:outline-none',
-//         'focus:ring-2',
-//         'focus:ring-inset',
-//         'focus:ring-white'
-//       )}
-//       aria-expanded="false"
-//       onClick={onClick}
-//     >
-//       <span className={clsx('sr-only')}>Open main menu</span>
-//       <svg
-//         className={clsx('block', 'h-6', 'w-6')}
-//         xmlns="http://www.w3.org/2000/svg"
-//         fill="none"
-//         viewBox="0 0 24 24"
-//         stroke="currentColor"
-//         aria-hidden="true"
-//       >
-//         <path
-//           strokeLinecap="round"
-//           strokeLinejoin="round"
-//           strokeWidth="2"
-//           d="M4 6h16M4 12h16M4 18h16"
-//         />
-//       </svg>
-//       <svg
-//         className={clsx('hidden', 'h-6', 'w-6')}
-//         xmlns="http://www.w3.org/2000/svg"
-//         fill="none"
-//         viewBox="0 0 24 24"
-//         stroke="currentColor"
-//         aria-hidden="true"
-//       >
-//         <path
-//           strokeLinecap="round"
-//           strokeLinejoin="round"
-//           strokeWidth="2"
-//           d="M6 18L18 6M6 6l12 12"
-//         />
-//       </svg>
-//     </button>
-//   )
-// }
-
-interface HeaderProps {
+interface Props {
   className?: string
   links: {
     title: string
@@ -73,7 +13,7 @@ interface HeaderProps {
   }[]
 }
 
-const Header: React.FC<HeaderProps> = ({ links, className }) => {
+const Header: React.FC<Props> = ({ links, className }) => {
   const [isMenuHidden, setMenuHidden] = useState(true)
 
   return (
@@ -146,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({ links, className }) => {
               'pb-3',
               'space-y-1',
               'border-t-2',
-              'border-orange-600'
+              'border-primary-500'
             )}
           >
             {links.map(link => (
