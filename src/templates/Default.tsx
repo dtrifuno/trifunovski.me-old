@@ -41,8 +41,16 @@ const components: MDXProviderComponents = {
 const Default: React.FC = ({ children }) => {
   return (
     <Layout>
-      <div className="my-3 md:my-5">
-        <article className="mx-auto prose prose-orange prose-lg max-w-4xl">
+      <div className={clsx('my-3', 'md:my-5')}>
+        <article
+          className={clsx(
+            'mx-auto',
+            'prose',
+            'prose-orange',
+            'prose-lg',
+            'max-w-4xl'
+          )}
+        >
           <MDXProvider components={components}>{children}</MDXProvider>
         </article>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { parseISO, format } from 'date-fns'
+import clsx from 'clsx'
 
 interface Props {
   isoString: string
@@ -9,13 +10,13 @@ interface Props {
 
 const Date: React.FC<Props> = ({
   isoString,
-  className = '',
+  className,
   dateFormat = 'MMMM dd, yyyy',
 }) => {
   const date = parseISO(isoString)
 
   return (
-    <time className={className} dateTime={format(date, 'yyyy-MM-dd')}>
+    <time className={clsx(className)} dateTime={format(date, 'yyyy-MM-dd')}>
       {format(date, dateFormat)}
     </time>
   )

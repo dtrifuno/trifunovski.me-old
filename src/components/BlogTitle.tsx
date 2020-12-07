@@ -13,13 +13,13 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
   const { title, date, abstract, last_updated } = frontmatter
   const dateLine = (
     <div>
-      <span className="whitespace-no-wrap">
+      <span className={clsx('whitespace-no-wrap')}>
         Posted on <Date isoString={date} />
       </span>
       {last_updated && (
         <>
           {', '}
-          <span className="whitespace-no-wrap">
+          <span className={clsx('whitespace-no-wrap')}>
             Last updated <Date isoString={last_updated} />
           </span>
         </>
@@ -27,10 +27,20 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
     </div>
   )
   return (
-    <div className={clsx(className, 'flex flex-col items-center')}>
-      <h1 className="mb-1 text-4xl font-bold">{title}</h1>
-      <div className="text-gray-600 text-center w-4/5">{dateLine}</div>
-      <div className="text-justify text-gray-700 my-2 text-lg italic">
+    <div className={clsx('flex', 'flex-col', 'items-center', className)}>
+      <h1 className={clsx('mb-1', 'text-4xl', 'font-bold')}>{title}</h1>
+      <div className={clsx('text-gray-600', 'text-center', 'w-4/5')}>
+        {dateLine}
+      </div>
+      <div
+        className={clsx(
+          'text-justify',
+          'text-gray-700',
+          'my-2',
+          'text-lg',
+          'italic'
+        )}
+      >
         {abstract}
       </div>
     </div>

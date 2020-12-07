@@ -58,14 +58,29 @@ const BlogPost: React.FC<Props> = props => {
 
   return (
     <Layout>
-      <div className="flex flex-row justify-center">
-        <div className="max-w-4xl flex flex-row">
-          <div className="sm:pr-4 md:pr-6 sm:w-2/3 lg:w-3/4 py-6">
+      <div className={clsx('flex', 'flex-row', 'justify-center')}>
+        <div className={clsx('max-w-4xl', 'flex', 'flex-row')}>
+          <div
+            className={clsx(
+              'sm:pr-4',
+              'md:pr-6',
+              'sm:w-2/3',
+              'lg:w-3/4',
+              'py-6'
+            )}
+          >
             <BlogTitle
-              className="mb-5"
+              className={clsx('mb-5')}
               frontmatter={blogPostData.frontmatter}
             />
-            <div className="prose prose-orange md:prose-lg max-w-none">
+            <div
+              className={clsx(
+                'prose',
+                'prose-orange',
+                'md:prose-lg',
+                'max-w-none'
+              )}
+            >
               <MDXProvider components={components}>
                 <MDXRenderer>{blogPostData.body}</MDXRenderer>
                 <BlogPostTags tags={tags} />
@@ -73,7 +88,17 @@ const BlogPost: React.FC<Props> = props => {
             </div>
           </div>
           <Sidebar
-            className="border-l-2 border-gray-400 h-screen sticky top-0 hidden sm:block w-1/3 lg:w-1/4"
+            className={clsx(
+              'border-l-2',
+              'border-gray-400',
+              'h-screen',
+              'sticky',
+              'top-0',
+              'hidden',
+              'sm:block',
+              'w-1/3',
+              'lg:w-1/4'
+            )}
             tableOfContents={tableOfContents}
           />
         </div>

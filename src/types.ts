@@ -34,6 +34,11 @@ export type BibliographyItem = {
 export type BibliographyData = Record<CitationKey, BibliographyItem>
 
 /* Blog */
+export interface PageContext {
+  currentPage: number
+  numPages: number
+}
+
 export interface BlogEntriesData {
   edges: {
     node: BlogEntryListData
