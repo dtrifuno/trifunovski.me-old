@@ -1,14 +1,12 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { TOCItemType } from '../types'
+import { TableOfContents } from '../types'
 import clsx from 'clsx'
 
 interface Props {
   className?: string
-  tableOfContents: {
-    items?: TOCItemType[]
-  }
+  tableOfContents: TableOfContents
 }
 
 const Sidebar: React.FC<Props> = ({ className, tableOfContents }) => {
@@ -20,11 +18,11 @@ const Sidebar: React.FC<Props> = ({ className, tableOfContents }) => {
             Table of Contents
           </span>
           <ul className={clsx('leading-tight')}>
-            {tableOfContents.items?.map(i => (
+            {tableOfContents.items.map(i => (
               <li className={clsx('py-2', 'text-gray-800')} key={i.url}>
                 <Link to={i.url}>{i.title}</Link>
                 <ul>
-                  {i.items?.map(u => (
+                  {i.items.map(u => (
                     <li className={clsx('ml-4', 'py-2')} key={i.url + u.url}>
                       <Link to={u.url}>{u.title}</Link>
                     </li>

@@ -35,12 +35,7 @@ const Footer: React.FC<Props> = ({ className }) => {
             Darko Trifunovski © 2020&ndash;2021. Built with Gatsby&mdash;source
             code available on{' '}
             <a
-              className={clsx(
-                'text-primary-500',
-                'font-semibold',
-                'no-underline',
-                'hover:underline'
-              )}
+              className={clsx('link')}
               href="https://github.com/dtrifuno/trifunovski.me"
             >
               Github

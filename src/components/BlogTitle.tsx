@@ -1,11 +1,14 @@
 import React from 'react'
 import clsx from 'clsx'
-import { BlogFrontmatterData } from '../types'
+import { MdxFrontmatter } from '../types'
 
 import Date from './Date'
 
 interface Props {
-  frontmatter: BlogFrontmatterData
+  frontmatter: Pick<
+    MdxFrontmatter,
+    'title' | 'date' | 'abstract' | 'last_updated'
+  >
   className?: string
 }
 
@@ -27,11 +30,9 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
     </div>
   )
   return (
-    <div className={clsx('flex', 'flex-col', 'items-center', className)}>
+    <div className={clsx('flex', 'flex-col', '', className)}>
       <h1 className={clsx('mb-1', 'text-4xl', 'font-bold')}>{title}</h1>
-      <div className={clsx('text-gray-600', 'text-center', 'w-4/5')}>
-        {dateLine}
-      </div>
+      <div className={clsx('text-gray-600', '', 'w-4/5')}>{dateLine}</div>
       <div
         className={clsx(
           'text-justify',

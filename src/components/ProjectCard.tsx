@@ -93,7 +93,7 @@ interface Props {
 
 const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
   const { title, description, tags, github_url, demo_url } = project
-  const { fluid } = project.thumbnail.childImageSharp
+  const { fluid } = project.thumbnail.childImageSharp as any
 
   return (
     <div className={clsx('py-4', 'lg:py-3')}>

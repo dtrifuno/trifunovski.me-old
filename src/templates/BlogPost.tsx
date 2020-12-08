@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import clsx from 'clsx'
 
-import { BlogPostDetailData } from '../types'
+import { BlogPostQuery } from '../types'
 
 import { MDXProvider, MDXProviderComponents } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -46,15 +46,12 @@ const components: MDXProviderComponents = {
 }
 
 interface Props {
-  data: {
-    mdx: BlogPostDetailData
-  }
+  data: BlogPostQuery
 }
 
-const BlogPost: React.FC<Props> = props => {
-  const blogPostData = props.data.mdx
-  const { tableOfContents } = blogPostData
-  const { title, tags } = blogPostData.frontmatter
+const BlogPost: React.FC<Props> = ({ data }) => {
+  const { tableOfContents, body, frontmatter } = data.mdx!
+  const { title, tags } = frontmatter
 
   return (
     <Layout>
@@ -69,10 +66,7 @@ const BlogPost: React.FC<Props> = props => {
               'py-6'
             )}
           >
-            <BlogTitle
-              className={clsx('mb-5')}
-              frontmatter={blogPostData.frontmatter}
-            />
+            <BlogTitle className={clsx('mb-5')} frontmatter={frontmatter} />
             <div
               className={clsx(
                 'prose',
@@ -82,7 +76,7 @@ const BlogPost: React.FC<Props> = props => {
               )}
             >
               <MDXProvider components={components}>
-                <MDXRenderer>{blogPostData.body}</MDXRenderer>
+                <MDXRenderer>{body}</MDXRenderer>
                 <BlogPostTags tags={tags} />
               </MDXProvider>
             </div>
@@ -108,11 +102,20 @@ const BlogPost: React.FC<Props> = props => {
 }
 
 export const pageQeury = graphql`
-  query GetBlogPostQuery($id: String) {
+  query BlogPost($id: String) {
     mdx(id: { eq: $id }) {
       id
       body
-      tableOfContents
+      tableOfContents {
+        items {
+          title
+          url
+          items {
+            title
+            url
+          }
+        }
+      }
       frontmatter {
         title
         subtitle

@@ -5,18 +5,17 @@ import BlogEntry from '../components/BlogEntry'
 import Layout from '../components/Layout'
 import Paginator from '../components/Paginator'
 
-import { BlogEntriesData, PageContext } from '../types'
+import { PageContext } from '../types'
+import { BlogListQuery } from '../types'
 import clsx from 'clsx'
 
 interface Props {
-  data: {
-    allMdx: BlogEntriesData
-  }
+  data: BlogListQuery
   pageContext: PageContext
 }
 
 const BlogList: React.FC<Props> = ({ pageContext, data }) => {
-  const posts = data.allMdx.edges.map(edge => edge.node)
+  const posts = data.allMdx.nodes
   console.log(posts)
   return (
     <Layout>
@@ -41,8 +40,8 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
   )
 }
 
-export const query = graphql`
-  query BlogListQuery($limit: Int, $skip: Int) {
+export const pageQuery = graphql`
+  query BlogList($limit: Int, $skip: Int) {
     allMdx(
       filter: { fields: { slug: { regex: "/^/(blog|draft)//" } } }
       sort: {
@@ -52,20 +51,18 @@ export const query = graphql`
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            subtitle
-            abstract
-            tags
-            date
-            last_updated
-          }
-          fields {
-            slug
-          }
+      nodes {
+        id
+        frontmatter {
+          title
+          subtitle
+          abstract
+          tags
+          date
+          last_updated
+        }
+        fields {
+          slug
         }
       }
     }

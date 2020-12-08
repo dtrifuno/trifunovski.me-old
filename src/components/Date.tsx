@@ -11,7 +11,7 @@ interface Props {
 const Date: React.FC<Props> = ({
   isoString,
   className,
-  dateFormat = 'MMMM dd, yyyy',
+  dateFormat = 'MMMM d, yyyy',
 }) => {
   const date = parseISO(isoString)
 

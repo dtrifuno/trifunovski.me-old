@@ -4,11 +4,11 @@ import React from 'react'
 import { FaTags } from 'react-icons/fa'
 
 interface Props {
-  tags?: string[]
+  tags: string[]
 }
 
 const BlogPostTags: React.FC<Props> = ({ tags }) => {
-  if (!tags) {
+  if (tags.length === 0) {
     return <></>
   }
 

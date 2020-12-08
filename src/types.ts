@@ -1,3 +1,15 @@
+import {
+  BlogListQuery,
+  BlogPostQuery,
+  TocItem,
+  MdxFrontmatter,
+  AllProjectsQuery,
+} from '../gatsby-graphql'
+
+type Unpacked<T> = T extends (infer U)[] ? U : T
+
+export { MdxFrontmatter }
+
 /* Bibliography */
 export interface BibtexEntry {
   citationKey: CitationKey
@@ -34,64 +46,35 @@ export type BibliographyItem = {
 export type BibliographyData = Record<CitationKey, BibliographyItem>
 
 /* Blog */
+export { BlogListQuery, BlogPostQuery, TocItem }
+
 export interface PageContext {
   currentPage: number
   numPages: number
 }
 
-export interface BlogEntriesData {
-  edges: {
-    node: BlogEntryListData
-  }[]
-}
+export type BlogEntryListData = Unpacked<BlogListQuery['allMdx']['nodes']>
 
-export interface BlogEntryListData {
-  id: string
-  frontmatter: BlogFrontmatterData
-  fields: {
-    slug: string
-  }
-}
-
-export interface BlogPostDetailData {
-  id: string
-  body: string
-  tableOfContents: {
-    items?: TOCItemType[]
-  }
-  frontmatter: BlogFrontmatterData
-  fields: {
-    bibliography?: BibtexEntry[]
-  }
-}
-
-export interface BlogFrontmatterData {
-  title: string
-  date: string
-  last_updated?: string
-  subtitle?: string
-  abstract?: string
-  tags: string[]
-}
-
-export interface TOCItemType {
-  url: string
-  title: string
-  items?: TOCItemType[]
+export interface TableOfContents {
+  items: (Pick<TocItem, 'title' | 'url'> & {
+    items: Pick<TocItem, 'title' | 'url'>[]
+  })[]
 }
 
 /* Projects */
-import { FluidObject } from 'gatsby-image'
-export type Project = {
-  id: string
-  title: string
-  description: string
-  tags: string[]
-  demo_url: string
-  github_url: string
-  thumbnail: {
-    childImageSharp: {
-      fluid: FluidObject
-    }
-  }
-}
+export type Project = Unpacked<AllProjectsQuery['allProjectsYaml']['nodes']>
+
+// import { FluidObject } from 'gatsby-image'
+// export type Project = {
+//   id: string
+//   title: string
+//   description: string
+//   tags: string[]
+//   demo_url: string
+//   github_url: string
+//   thumbnail: {
+//     childImageSharp: {
+//       fluid: FluidObject
+//     }
+//   }
+// }
