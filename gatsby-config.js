@@ -11,6 +11,7 @@ const siteMetadata = {
   url: `https://trifunovski.me`,
   image: `/images/snape.jpg`, // Path to your image you placed in the 'static' folder
   twitterUsername: `@dtrifuno`,
+  authorName: `Darko Trifunovski`,
   siteLanguage: `en`,
 }
 
@@ -30,6 +31,11 @@ module.exports = {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
         fileName: `./gatsby-graphql.ts`,
+        documentPaths: [
+          `./src/hooks/**/*.{ts,tsx}`,
+          `./src/templates/**/*.{ts,tsx}`,
+          `./node_modules/gatsby-transformer-sharp/**/*.js`,
+        ],
       },
     },
     {
@@ -73,6 +79,63 @@ module.exports = {
             options: {
               maxWidth: 1035,
             },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                url
+                site_url: url
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map(post => {
+                return Object.assign({}, post.frontmatter, {
+                  description: post.frontmatter.subtitle,
+                  date: post.frontmatter.date,
+                  url: site.siteMetadata.url + post.fields.slug,
+                  guid: site.siteMetadata.url + post.fields.slug,
+                  custom_elements: [
+                    { 'content:encoded': post.frontmatter.abstract },
+                  ],
+                })
+              })
+            },
+            query: `
+              {
+                allMdx(
+                  filter: { fields: { slug: { regex: "/^/post//" } } }
+                  sort: {
+                    fields: [frontmatter___date, frontmatter___title]
+                    order: [DESC, ASC]
+                  }
+                ) {
+                  nodes {
+                    fields { slug }
+                    frontmatter {
+                      title
+                      date
+                      subtitle
+                      abstract
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: `${siteMetadata.authorName}'s RSS Feed`,
           },
         ],
       },

@@ -11,6 +11,7 @@ const useSiteMetadata = (): SiteMetadata => {
           siteLanguage
           title
           titleTemplate
+          authorName
           twitterUsername
           url
         }

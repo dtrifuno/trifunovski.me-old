@@ -14,7 +14,7 @@ const Layout: React.FC = ({ children }) => {
         links={[
           { title: 'About', to: '/' },
           { title: 'Projects', to: '/projects' },
-          { title: 'Blog', to: '/blog' },
+          { title: 'Posts', to: '/posts' },
         ]}
       />
       <main className={clsx('mb-auto')}>

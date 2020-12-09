@@ -35,7 +35,7 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
             <BlogEntry entry={post} key={post.id} />
           ))}
         </ul>
-        <Paginator url="/blog" pageContext={pageContext} />
+        <Paginator url="/posts" pageContext={pageContext} />
       </div>
     </Layout>
   )
@@ -44,7 +44,7 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
 export const pageQuery = graphql`
   query BlogList($limit: Int, $skip: Int) {
     allMdx(
-      filter: { fields: { slug: { regex: "/^/(blog|draft)//" } } }
+      filter: { fields: { slug: { regex: "/^/post//" } } }
       sort: {
         fields: [frontmatter___date, frontmatter___title]
         order: [DESC, ASC]
