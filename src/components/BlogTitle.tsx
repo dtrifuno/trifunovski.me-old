@@ -1,19 +1,16 @@
 import React from 'react'
 import clsx from 'clsx'
-import { MdxFrontmatter } from '../types'
+import { Frontmatter } from '../types'
 
 import Date from './Date'
 
 interface Props {
-  frontmatter: Pick<
-    MdxFrontmatter,
-    'title' | 'date' | 'abstract' | 'last_updated'
-  >
+  frontmatter: Frontmatter
   className?: string
 }
 
 const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
-  const { title, date, abstract, last_updated } = frontmatter
+  const { title, date, subtitle, last_updated } = frontmatter
   const dateLine = (
     <div>
       <span className={clsx('whitespace-no-wrap')}>
@@ -42,7 +39,7 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
           'italic'
         )}
       >
-        {abstract}
+        {subtitle}
       </div>
     </div>
   )

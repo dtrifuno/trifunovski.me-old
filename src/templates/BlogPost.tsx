@@ -52,11 +52,11 @@ interface Props {
 
 const BlogPost: React.FC<Props> = ({ data }) => {
   const { tableOfContents, body, frontmatter } = data.mdx!
-  const { title, abstract, tags } = frontmatter
+  const { title, subtitle, tags } = frontmatter
 
   return (
     <Layout>
-      <SEO title={title} description={abstract} article />
+      <SEO title={title} description={subtitle} article />
       <div className={clsx('flex', 'flex-row', 'justify-center')}>
         <div className={clsx('max-w-4xl', 'flex', 'flex-row')}>
           <div
@@ -103,7 +103,7 @@ const BlogPost: React.FC<Props> = ({ data }) => {
   )
 }
 
-export const pageQeury = graphql`
+export const pageQuery = graphql`
   query BlogPost($id: String) {
     mdx(id: { eq: $id }) {
       id
@@ -122,7 +122,6 @@ export const pageQeury = graphql`
         title
         subtitle
         date
-        abstract
         tags
         last_updated
       }

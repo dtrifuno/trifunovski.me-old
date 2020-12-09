@@ -14,7 +14,7 @@ const BlogEntry: React.FC<BlogEntryProps> = ({ entry }) => {
   const slug = entry.fields!.slug || '#'
 
   return (
-    <li className={clsx('text-lg', 'py-3')}>
+    <li className={clsx('text-lg', 'py-2')}>
       <Date
         isoString={date}
         dateFormat="MMM d, yyyy"

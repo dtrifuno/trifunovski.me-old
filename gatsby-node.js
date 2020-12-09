@@ -30,6 +30,21 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     },
   })
 
+  createFieldExtension({
+    name: 'taggify',
+    extend(options, prevFieldConfig) {
+      return {
+        resolve(source, args, context, info) {
+          const data = source[info.fieldName]
+          if (!data) {
+            return ['misc']
+          }
+          return data.map(tag => tag.replace(' ', '-'))
+        },
+      }
+    },
+  })
+
   createTypes(`
     type Site implements Node {
       siteMetadata: SiteSiteMetadata!
@@ -38,7 +53,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       title: String!
       description: String!
       titleTemplate: String!
-      url: String!
+      siteUrl: String!
       image: String!
       authorName: String!
       twitterUsername: String!
@@ -53,8 +68,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       date: Date! @dateformat
       last_updated: Date @dateformat
       subtitle: String
-      abstract: String
-      tags: [String!]! @emptyIfNull
+      tags: [String!]! @taggify
       bibliography: File @fileByRelativePath
       draft: Boolean! @falseIfNull
     }
@@ -120,7 +134,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('🚨  ERROR: Running "PublishedPosts" query.')
   }
   const numPublishedPosts = publishedPostsResult.data.allMdx.nodes.length
-  const postsPerPage = 6
+  const postsPerPage = 8
   const numPages = Math.ceil(numPublishedPosts / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({

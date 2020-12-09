@@ -4,13 +4,10 @@ import {
   TocItem,
   MdxFrontmatter,
   AllProjectsQuery,
-  SiteSiteMetadata,
   SiteMetadataQuery,
 } from '../gatsby-graphql'
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
-
-export { MdxFrontmatter }
 
 /* Metadata */
 export { SiteMetadataQuery }
@@ -55,6 +52,8 @@ export type BibliographyData = Record<CitationKey, BibliographyItem>
 
 /* Blog */
 export { BlogListQuery, BlogPostQuery, TocItem }
+
+export type Frontmatter = NonNullable<BlogPostQuery['mdx']>['frontmatter']
 
 export interface PageContext {
   currentPage: number

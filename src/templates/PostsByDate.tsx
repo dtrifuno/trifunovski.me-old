@@ -17,9 +17,13 @@ interface Props {
 
 const BlogList: React.FC<Props> = ({ pageContext, data }) => {
   const posts = data.allMdx.nodes
+  const { currentPage, numPages } = pageContext
+  const title =
+    numPages === 1 ? `Posts` : `Posts (${currentPage} of ${numPages})`
+
   return (
     <Layout>
-      <SEO title={`Page ${pageContext.currentPage}`} />
+      <SEO title={title} />
       <div className={clsx('max-w-4xl', 'mx-auto', 'my-3', 'md:my-5')}>
         <h2 className={clsx('text-3xl', 'lg:text-4xl', 'font-bold', 'mb-0')}>
           Recent Posts
@@ -57,7 +61,6 @@ export const pageQuery = graphql`
         frontmatter {
           title
           subtitle
-          abstract
           tags
           date
           last_updated

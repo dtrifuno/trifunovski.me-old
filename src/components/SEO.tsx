@@ -17,7 +17,7 @@ const SEO: React.FC<Props> = props => {
     title: defaultTitle,
     titleTemplate,
     description: defaultDescription,
-    url,
+    siteUrl: url,
     image: defaultImage,
     siteLanguage,
     twitterUsername,

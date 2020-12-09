@@ -8,7 +8,7 @@ const siteMetadata = {
   title: `Home`,
   titleTemplate: `%s · Darko Trifunovski`,
   description: `Darko Trifunovski's personal website and blog.`,
-  url: `https://trifunovski.me`,
+  siteUrl: `https://trifunovski.me`,
   image: `/images/snape.jpg`, // Path to your image you placed in the 'static' folder
   twitterUsername: `@dtrifuno`,
   authorName: `Darko Trifunovski`,
@@ -84,6 +84,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/draft/*`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
@@ -92,8 +98,8 @@ module.exports = {
               siteMetadata {
                 title
                 description
-                url
-                site_url: url
+                siteUrl
+                site_url: siteUrl
               }
             }
           }
@@ -105,11 +111,8 @@ module.exports = {
                 return Object.assign({}, post.frontmatter, {
                   description: post.frontmatter.subtitle,
                   date: post.frontmatter.date,
-                  url: site.siteMetadata.url + post.fields.slug,
-                  guid: site.siteMetadata.url + post.fields.slug,
-                  custom_elements: [
-                    { 'content:encoded': post.frontmatter.abstract },
-                  ],
+                  url: site.siteMetadata.siteUrl + post.fields.slug,
+                  guid: site.siteMetadata.siteUrl + post.fields.slug,
                 })
               })
             },
@@ -128,7 +131,6 @@ module.exports = {
                       title
                       date
                       subtitle
-                      abstract
                     }
                   }
                 }

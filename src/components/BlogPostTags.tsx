@@ -14,7 +14,8 @@ const BlogPostTags: React.FC<Props> = ({ tags }) => {
 
   return (
     <div className={clsx('flex', 'flex-row', 'items-center')}>
-      <FaTags className={clsx('mr-3')} />
+      {/* <FaTags className={clsx('mr-3')} /> */}
+      <span className="font-semibold mr-1">Tags:</span>
       <ul className={clsx('')}>
         {tags?.map(tag => (
           <Tag tag={tag} key={tag} />
@@ -25,7 +26,7 @@ const BlogPostTags: React.FC<Props> = ({ tags }) => {
 }
 
 const Tag: React.FC<{ tag: string }> = ({ tag }) => {
-  const link = `/tags/${tag.replace(/ /g, '_')}`
+  const link = `/tag/${tag}`
   return (
     <Link
       className={clsx(

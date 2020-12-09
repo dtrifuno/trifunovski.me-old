@@ -13,7 +13,7 @@ const useSiteMetadata = (): SiteMetadata => {
           titleTemplate
           authorName
           twitterUsername
-          url
+          siteUrl
         }
       }
     }

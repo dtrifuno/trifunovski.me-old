@@ -28,7 +28,6 @@ const Paginator: React.FC<Props> = ({ pageContext, url, className }) => {
     <div
       className={clsx(
         'text-xl',
-        'italic',
         'flex',
         'justify-between',
         'items-center',
@@ -40,10 +39,10 @@ const Paginator: React.FC<Props> = ({ pageContext, url, className }) => {
           className={clsx('text-primary-500', 'hover:underline')}
           to={prevLink}
         >
-          « Previous
+          « Newer
         </Link>
       ) : (
-        <span>« Previous</span>
+        <span>« Newer</span>
       )}
       {` - ${currentPage} - `}
       {nextLink ? (
@@ -51,10 +50,10 @@ const Paginator: React.FC<Props> = ({ pageContext, url, className }) => {
           className={clsx('text-primary-500', 'hover:underline')}
           to={nextLink}
         >
-          Next »
+          Older »
         </Link>
       ) : (
-        <span>Next »</span>
+        <span>Older »</span>
       )}
     </div>
   )
