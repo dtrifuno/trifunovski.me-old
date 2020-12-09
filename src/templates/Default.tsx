@@ -3,6 +3,7 @@ import { MDXProvider, MDXProviderComponents } from '@mdx-js/react'
 
 import Layout from '../components/Layout'
 import SmartLink from '../components/SmartLink'
+import SEO from '../components/SEO'
 import clsx from 'clsx'
 
 const components: MDXProviderComponents = {
@@ -36,6 +37,7 @@ const components: MDXProviderComponents = {
       {children}
     </SmartLink>
   ),
+  SEO,
 }
 
 const Default: React.FC = ({ children }) => {

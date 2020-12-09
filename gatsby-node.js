@@ -30,14 +30,19 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     },
   })
 
-  // const typeDefs = [
-  //   'type Mdx implements Node { frontmatter: MdxFrontmatter! }',
-  //   schema.buildObjectType({
-  //     name: 'MdxFrontmatter',
-  //   }),
-  // ]
-
   createTypes(`
+    type Site implements Node {
+      siteMetadata: SiteSiteMetadata!
+    }
+    type SiteSiteMetadata {
+      title: String!
+      description: String!
+      titleTemplate: String!
+      url: String!
+      image: String!
+      twitterUsername: String!
+      siteLanguage: String!
+    }
     type Mdx implements Node {
       frontmatter: MdxFrontmatter!
       tableOfContents: TableOfContents!

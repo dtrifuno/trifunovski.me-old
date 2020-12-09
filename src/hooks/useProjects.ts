@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { Project } from '../types'
+import { Project, AllProjectsQuery } from '../types'
 
-export const useProjects = (): Project[] => {
-  const { allProjectsYaml } = useStaticQuery(graphql`
+const useProjects = (): Project[] => {
+  const { allProjectsYaml } = useStaticQuery<AllProjectsQuery>(graphql`
     query AllProjects {
       allProjectsYaml {
         nodes {
@@ -25,3 +25,5 @@ export const useProjects = (): Project[] => {
   `)
   return allProjectsYaml.nodes
 }
+
+export default useProjects

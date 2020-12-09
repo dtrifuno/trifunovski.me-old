@@ -3,13 +3,14 @@ import React from 'react'
 
 import Layout from '../components/Layout'
 import ProjectCard from '../components/ProjectCard'
-import { useProjects } from '../hooks/useProjects'
+import SEO from '../components/SEO'
+import useProjects from '../hooks/useProjects'
 
 const ProjectsPage: React.FC = () => {
   const projects = useProjects()
   return (
     <Layout>
-      {/* <SEO title="Projects" /> */}
+      <SEO title="Projects" />
       <div className={clsx('my-3')}>
         <div className={clsx('max-w-4xl', 'mx-auto')}>
           <h2

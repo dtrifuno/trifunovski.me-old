@@ -4,11 +4,19 @@ import {
   TocItem,
   MdxFrontmatter,
   AllProjectsQuery,
+  SiteSiteMetadata,
+  SiteMetadataQuery,
 } from '../gatsby-graphql'
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
 
 export { MdxFrontmatter }
+
+/* Metadata */
+export { SiteMetadataQuery }
+export type SiteMetadata = NonNullable<
+  SiteMetadataQuery['site']
+>['siteMetadata']
 
 /* Bibliography */
 export interface BibtexEntry {
@@ -62,6 +70,7 @@ export interface TableOfContents {
 }
 
 /* Projects */
+export { AllProjectsQuery }
 export type Project = Unpacked<AllProjectsQuery['allProjectsYaml']['nodes']>
 
 // import { FluidObject } from 'gatsby-image'

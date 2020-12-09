@@ -4,8 +4,18 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+const siteMetadata = {
+  title: `Home`,
+  titleTemplate: `%s · Darko Trifunovski`,
+  description: `Darko Trifunovski's personal website and blog.`,
+  url: `https://trifunovski.me`,
+  image: `/images/snape.jpg`, // Path to your image you placed in the 'static' folder
+  twitterUsername: `@dtrifuno`,
+  siteLanguage: `en`,
+}
+
 module.exports = {
-  /* Your site config here */
+  siteMetadata,
   plugins: [
     {
       resolve: `gatsby-plugin-sass`,
@@ -56,6 +66,8 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [
           `gatsby-remark-autolink-headers`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
           {
             resolve: `gatsby-remark-images`,
             options: {

@@ -8,6 +8,7 @@ import Paginator from '../components/Paginator'
 import { PageContext } from '../types'
 import { BlogListQuery } from '../types'
 import clsx from 'clsx'
+import SEO from '../components/SEO'
 
 interface Props {
   data: BlogListQuery
@@ -16,9 +17,9 @@ interface Props {
 
 const BlogList: React.FC<Props> = ({ pageContext, data }) => {
   const posts = data.allMdx.nodes
-  console.log(posts)
   return (
     <Layout>
+      <SEO title={`Page ${pageContext.currentPage}`} />
       <div className={clsx('max-w-4xl', 'mx-auto', 'my-3', 'md:my-5')}>
         <h2 className={clsx('text-3xl', 'lg:text-4xl', 'font-bold', 'mb-0')}>
           Recent Posts

@@ -11,6 +11,7 @@ import BlogTitle from '../components/BlogTitle'
 import SmartLink from '../components/SmartLink'
 import Sidebar from '../components/Sidebar'
 import BlogPostTags from '../components/BlogPostTags'
+import SEO from '../components/SEO'
 
 const components: MDXProviderComponents = {
   h1: ({ children, className, ...props }) => (
@@ -51,10 +52,11 @@ interface Props {
 
 const BlogPost: React.FC<Props> = ({ data }) => {
   const { tableOfContents, body, frontmatter } = data.mdx!
-  const { title, tags } = frontmatter
+  const { title, abstract, tags } = frontmatter
 
   return (
     <Layout>
+      <SEO title={title} description={abstract} article />
       <div className={clsx('flex', 'flex-row', 'justify-center')}>
         <div className={clsx('max-w-4xl', 'flex', 'flex-row')}>
           <div
