@@ -8,6 +8,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.katex {
+  @apply text-xl;
+}
+
 .hide-svg {
   svg {
     @apply hidden;

@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+const { macros } = require('./katex-macros')
+
 const siteMetadata = {
   title: `Home`,
   titleTemplate: `%s · Darko Trifunovski`,
@@ -74,6 +76,12 @@ module.exports = {
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              macros,
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {

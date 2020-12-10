@@ -2,7 +2,6 @@ import {
   BlogListQuery,
   BlogPostQuery,
   TocItem,
-  MdxFrontmatter,
   AllProjectsQuery,
   SiteMetadataQuery,
 } from '../gatsby-graphql'
@@ -71,18 +70,3 @@ export interface TableOfContents {
 /* Projects */
 export { AllProjectsQuery }
 export type Project = Unpacked<AllProjectsQuery['allProjectsYaml']['nodes']>
-
-// import { FluidObject } from 'gatsby-image'
-// export type Project = {
-//   id: string
-//   title: string
-//   description: string
-//   tags: string[]
-//   demo_url: string
-//   github_url: string
-//   thumbnail: {
-//     childImageSharp: {
-//       fluid: FluidObject
-//     }
-//   }
-// }
