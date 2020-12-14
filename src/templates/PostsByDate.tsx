@@ -34,7 +34,7 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
         >
           (view posts by tag instead)
         </Link>
-        <ul className={clsx('list-none', 'py-6')}>
+        <ul className={clsx('list-none', 'py-4', 'lg:py-6')}>
           {posts.map(post => (
             <BlogEntry entry={post} key={post.id} />
           ))}

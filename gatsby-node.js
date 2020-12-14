@@ -1,5 +1,9 @@
 const fs = require('fs')
 const path = require('path')
+const countBy = require('lodash/countBy')
+const sortBy = require('lodash/sortBy')
+const flatMap = require('lodash/flatMap')
+const toPairs = require('lodash/toPairs')
 const { createFilePath } = require('gatsby-source-filesystem')
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
@@ -136,6 +140,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (publishedPostsResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Running "PublishedPosts" query.')
   }
+
+  // create recent posts pages
   const numPublishedPosts = publishedPostsResult.data.allMdx.nodes.length
   const postsPerPage = 8
   const numPages = Math.ceil(numPublishedPosts / postsPerPage)
@@ -150,6 +156,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         currentPage: i + 1,
       },
     })
+  })
+
+  // create tags page
+  const countsByTag = countBy(
+    flatMap(
+      publishedPostsResult.data.allMdx.nodes,
+      post => post.frontmatter.tags
+    )
+  )
+  const countPairs = toPairs(countsByTag)
+  const sortedPairs = sortBy(
+    sortBy(countPairs, pair => pair[0]),
+    pair => -1 * pair[1]
+  )
+  createPage({
+    path: `/tags`,
+    component: path.resolve('./src/templates/Tags.tsx'),
+    context: {
+      sortedPairs,
+    },
   })
 
   const allPostsResult = await graphql(`
