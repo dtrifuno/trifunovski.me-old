@@ -4,9 +4,12 @@ import {
   TocItem,
   AllProjectsQuery,
   SiteMetadataQuery,
+  AllPublishedPostsQuery,
 } from '../gatsby-graphql'
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
+
+export { AllPublishedPostsQuery }
 
 /* Metadata */
 export { SiteMetadataQuery }

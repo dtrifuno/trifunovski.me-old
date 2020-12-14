@@ -123,6 +123,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       ) {
         nodes {
           id
+          frontmatter {
+            tags
+          }
           fields {
             slug
           }

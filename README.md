@@ -5,7 +5,7 @@ Personal website and blog built with Gatsby
 ## TODO
 
 - ~~Prism syntax highlighting~~
-- Tags view
+- ~~Tags view~~
 - Posts by tag view
 - Clean up Blog Post titles and tags
 - Add Project priority

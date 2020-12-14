@@ -4143,6 +4143,11 @@ export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SiteMetadataQuery = { site?: Maybe<{ siteMetadata: Pick<SiteSiteMetadata, 'description' | 'image' | 'siteLanguage' | 'title' | 'titleTemplate' | 'authorName' | 'twitterUsername' | 'siteUrl'> }> };
 
+export type AllPublishedPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllPublishedPostsQuery = { allMdx: { nodes: Array<{ frontmatter: Pick<MdxFrontmatter, 'tags'> }> } };
+
 export type BlogPostQueryVariables = Exact<{
   id?: Maybe<Scalars['String']>;
 }>;
