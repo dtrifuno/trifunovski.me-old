@@ -12,30 +12,31 @@ import SmartLink from '../components/SmartLink'
 import Sidebar from '../components/Sidebar'
 import BlogPostTags from '../components/BlogPostTags'
 import SEO from '../components/SEO'
+import SyntaxHighlighter from '../components/SyntaxHighlighter'
 
 const components: MDXProviderComponents = {
   h1: ({ children, className, ...props }) => (
-    <h1 className={clsx('blog-anchor-tag', className)} {...props}>
+    <h1 className={clsx('hide-svg', className)} {...props}>
       {children}
     </h1>
   ),
   h2: ({ children, className, ...props }) => (
-    <h2 className={clsx('blog-anchor-tag', className)} {...props}>
+    <h2 className={clsx('hide-svg', className)} {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, className, ...props }) => (
-    <h3 className={clsx('blog-anchor-tag', className)} {...props}>
+    <h3 className={clsx('hide-svg', className)} {...props}>
       {children}
     </h3>
   ),
   h4: ({ children, className, ...props }) => (
-    <h4 className={clsx('blog-anchor-tag', className)} {...props}>
+    <h4 className={clsx('hide-svg', className)} {...props}>
       {children}
     </h4>
   ),
   h5: ({ children, className, ...props }) => (
-    <h5 className={clsx('blog-anchor-tag', className)} {...props}>
+    <h5 className={clsx('hide-svg', className)} {...props}>
       {children}
     </h5>
   ),
@@ -44,6 +45,7 @@ const components: MDXProviderComponents = {
       {children}
     </SmartLink>
   ),
+  code: props => <SyntaxHighlighter {...props} />,
 }
 
 interface Props {
@@ -57,7 +59,7 @@ const BlogPost: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={subtitle} article />
-      <div className={clsx('flex', 'flex-row', 'justify-center')}>
+      <div className={clsx('flex', 'flex-row', 'justify-center', 'max-w-full')}>
         <div className={clsx('max-w-4xl', 'flex', 'flex-row')}>
           <div
             className={clsx(

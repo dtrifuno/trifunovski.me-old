@@ -18,6 +18,29 @@ html {
   }
 }
 
+pre {
+  padding: 0 !important;
+  max-width: 90vw;
+}
+
+.non-prism-code,
+.prism-code {
+  padding: 1rem !important;
+  overflow-y: auto;
+  max-height: 30rem;
+
+  @apply text-xs;
+
+  @screen lg {
+    @apply text-sm;
+  }
+}
+
+.non-prism-code {
+  color: rgb(57, 58, 52);
+  background-color: rgb(246, 248, 250);
+}
+
 .prose {
   a {
     @apply no-underline text-primary-500;
