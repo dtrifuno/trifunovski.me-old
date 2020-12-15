@@ -34,7 +34,7 @@ Developer portfolio and blog built with Gatsby
 - ~~Tags view~~
 - ~~Posts by tag view~~
 - ~~Clean up Blog Post titles and tags~~
-- Add Project priority
+- ~~Add Project priority~~
 - Replace project box buttons with links
 - Sidebar autoscroll
 - Bibliography

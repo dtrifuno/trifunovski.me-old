@@ -4,7 +4,7 @@ import { Project, AllProjectsQuery } from '../types'
 const useProjects = (): Project[] => {
   const { allProjectsYaml } = useStaticQuery<AllProjectsQuery>(graphql`
     query AllProjects {
-      allProjectsYaml {
+      allProjectsYaml(sort: { fields: [priority, title], order: [ASC, DESC] }) {
         nodes {
           id
           title

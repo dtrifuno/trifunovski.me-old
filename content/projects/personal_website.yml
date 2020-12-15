@@ -6,4 +6,5 @@ description: >
 tags: ['Gatsby', 'React', 'Tailwind CSS', 'MDX']
 demo_url: 'https://trifunovski.me/'
 github_url: 'https://github.com/dtrifuno/trifunovski.me'
+priority: 3
 thumbnail: './personal_website.png'
