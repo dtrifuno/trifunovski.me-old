@@ -813,6 +813,7 @@ export type FileFieldsEnum =
   | 'childProjectsYaml___tags'
   | 'childProjectsYaml___demo_url'
   | 'childProjectsYaml___github_url'
+  | 'childProjectsYaml___priority'
   | 'childProjectsYaml___thumbnail___sourceInstanceName'
   | 'childProjectsYaml___thumbnail___absolutePath'
   | 'childProjectsYaml___thumbnail___relativePath'
@@ -880,6 +881,7 @@ export type FileFieldsEnum =
   | 'childProjectsYaml___thumbnail___childProjectsYaml___tags'
   | 'childProjectsYaml___thumbnail___childProjectsYaml___demo_url'
   | 'childProjectsYaml___thumbnail___childProjectsYaml___github_url'
+  | 'childProjectsYaml___thumbnail___childProjectsYaml___priority'
   | 'childProjectsYaml___thumbnail___childProjectsYaml___id'
   | 'childProjectsYaml___thumbnail___childProjectsYaml___children'
   | 'childProjectsYaml___id'
@@ -1716,6 +1718,7 @@ export type MdxFieldsEnum =
   | 'frontmatter___bibliography___childProjectsYaml___tags'
   | 'frontmatter___bibliography___childProjectsYaml___demo_url'
   | 'frontmatter___bibliography___childProjectsYaml___github_url'
+  | 'frontmatter___bibliography___childProjectsYaml___priority'
   | 'frontmatter___bibliography___childProjectsYaml___id'
   | 'frontmatter___bibliography___childProjectsYaml___children'
   | 'frontmatter___draft'
@@ -1986,6 +1989,7 @@ export type ProjectsYaml = Node & {
   tags: Array<Scalars['String']>;
   demo_url?: Maybe<Scalars['String']>;
   github_url?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
   thumbnail: File;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -2026,6 +2030,7 @@ export type ProjectsYamlFieldsEnum =
   | 'tags'
   | 'demo_url'
   | 'github_url'
+  | 'priority'
   | 'thumbnail___sourceInstanceName'
   | 'thumbnail___absolutePath'
   | 'thumbnail___relativePath'
@@ -2207,6 +2212,7 @@ export type ProjectsYamlFieldsEnum =
   | 'thumbnail___childProjectsYaml___tags'
   | 'thumbnail___childProjectsYaml___demo_url'
   | 'thumbnail___childProjectsYaml___github_url'
+  | 'thumbnail___childProjectsYaml___priority'
   | 'thumbnail___childProjectsYaml___thumbnail___sourceInstanceName'
   | 'thumbnail___childProjectsYaml___thumbnail___absolutePath'
   | 'thumbnail___childProjectsYaml___thumbnail___relativePath'
@@ -2350,6 +2356,7 @@ export type ProjectsYamlFilterInput = {
   tags?: Maybe<StringQueryOperatorInput>;
   demo_url?: Maybe<StringQueryOperatorInput>;
   github_url?: Maybe<StringQueryOperatorInput>;
+  priority?: Maybe<IntQueryOperatorInput>;
   thumbnail?: Maybe<FileFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2601,6 +2608,7 @@ export type QueryProjectsYamlArgs = {
   tags?: Maybe<StringQueryOperatorInput>;
   demo_url?: Maybe<StringQueryOperatorInput>;
   github_url?: Maybe<StringQueryOperatorInput>;
+  priority?: Maybe<IntQueryOperatorInput>;
   thumbnail?: Maybe<FileFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3026,6 +3034,7 @@ export type SitePageContext = {
   skip?: Maybe<Scalars['Int']>;
   numPages?: Maybe<Scalars['Int']>;
   currentPage?: Maybe<Scalars['Int']>;
+  tag?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
 };
 
@@ -3034,6 +3043,7 @@ export type SitePageContextFilterInput = {
   skip?: Maybe<IntQueryOperatorInput>;
   numPages?: Maybe<IntQueryOperatorInput>;
   currentPage?: Maybe<IntQueryOperatorInput>;
+  tag?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -3140,6 +3150,7 @@ export type SitePageFieldsEnum =
   | 'context___skip'
   | 'context___numPages'
   | 'context___currentPage'
+  | 'context___tag'
   | 'context___id'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
@@ -4156,13 +4167,25 @@ export type BlogPostQuery = { mdx?: Maybe<(
       )> }, frontmatter: Pick<MdxFrontmatter, 'title' | 'subtitle' | 'date' | 'tags' | 'last_updated'> }
   )> };
 
-export type BlogListQueryVariables = Exact<{
+export type BlogListRecentQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
 }>;
 
 
-export type BlogListQuery = { allMdx: { nodes: Array<(
+export type BlogListRecentQuery = { allMdx: { nodes: Array<(
+      Pick<Mdx, 'id'>
+      & { frontmatter: Pick<MdxFrontmatter, 'title' | 'subtitle' | 'tags' | 'date' | 'last_updated'>, fields?: Maybe<Pick<MdxFields, 'slug'>> }
+    )> } };
+
+export type BlogListForTagQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  tag?: Maybe<Scalars['String']>;
+}>;
+
+
+export type BlogListForTagQuery = { allMdx: { nodes: Array<(
       Pick<Mdx, 'id'>
       & { frontmatter: Pick<MdxFrontmatter, 'title' | 'subtitle' | 'tags' | 'date' | 'last_updated'>, fields?: Maybe<Pick<MdxFields, 'slug'>> }
     )> } };

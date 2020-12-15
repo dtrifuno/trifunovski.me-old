@@ -17,7 +17,7 @@ const Tags: React.FC<Props> = ({ pageContext }) => {
     <Layout>
       <SEO title="Tags" />
       <div className={clsx('my-3')}>
-        <div className={clsx('max-w-4xl', 'mx-auto')}>
+        <div className={clsx('max-w-4xl', 'mx-auto', 'my-3', 'md:my-5')}>
           <h2 className={clsx('text-3xl', 'lg:text-4xl', 'font-bold', 'mb-0')}>
             Tags
           </h2>

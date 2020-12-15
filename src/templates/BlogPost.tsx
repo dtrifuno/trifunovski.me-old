@@ -70,7 +70,7 @@ const BlogPost: React.FC<Props> = ({ data }) => {
               'py-6'
             )}
           >
-            <BlogTitle className={clsx('mb-5')} frontmatter={frontmatter} />
+            <BlogTitle className={clsx('mb-8')} frontmatter={frontmatter} />
             <div
               className={clsx(
                 'prose',
@@ -81,7 +81,6 @@ const BlogPost: React.FC<Props> = ({ data }) => {
             >
               <MDXProvider components={components}>
                 <MDXRenderer>{body}</MDXRenderer>
-                <BlogPostTags tags={tags} />
               </MDXProvider>
             </div>
           </div>

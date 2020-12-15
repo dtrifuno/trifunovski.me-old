@@ -90,6 +90,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       tags: [String!]! @emptyIfNull
       demo_url: String
       github_url: String
+      priority: Int
       thumbnail: File! @fileByRelativePath
     }
   `)
@@ -176,6 +177,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     context: {
       sortedPairs,
     },
+  })
+
+  // create tags pages
+  console.log(sortedPairs)
+  sortedPairs.forEach(([tag, numPosts]) => {
+    console.log(tag, numPosts)
+    const numPages = Math.ceil(numPosts / postsPerPage)
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/tag/${tag}` : `/tag/${tag}/${i + 1}`,
+        component: path.resolve('./src/templates/PostsByTag.tsx'),
+        context: {
+          tag,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    })
   })
 
   const allPostsResult = await graphql(`

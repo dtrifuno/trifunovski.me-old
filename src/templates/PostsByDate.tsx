@@ -6,12 +6,12 @@ import Layout from '../components/Layout'
 import Paginator from '../components/Paginator'
 
 import { PageContext } from '../types'
-import { BlogListQuery } from '../types'
+import { BlogListRecentQuery } from '../types'
 import clsx from 'clsx'
 import SEO from '../components/SEO'
 
 interface Props {
-  data: BlogListQuery
+  data: BlogListRecentQuery
   pageContext: PageContext
 }
 
@@ -39,14 +39,16 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
             <BlogEntry entry={post} key={post.id} />
           ))}
         </ul>
-        <Paginator url="/posts" pageContext={pageContext} />
+        {numPages !== 1 ? (
+          <Paginator url="/posts" pageContext={pageContext} />
+        ) : null}
       </div>
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
-  query BlogList($limit: Int, $skip: Int) {
+  query BlogListRecent($limit: Int, $skip: Int) {
     allMdx(
       filter: { fields: { slug: { regex: "/^/post//" } } }
       sort: {

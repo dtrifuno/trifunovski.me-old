@@ -1,15 +1,13 @@
 import {
-  BlogListQuery,
+  BlogListRecentQuery,
+  BlogListForTagQuery,
   BlogPostQuery,
   TocItem,
   AllProjectsQuery,
   SiteMetadataQuery,
-  AllPublishedPostsQuery,
 } from '../gatsby-graphql'
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
-
-export { AllPublishedPostsQuery }
 
 /* Metadata */
 export { SiteMetadataQuery }
@@ -53,16 +51,17 @@ export type BibliographyItem = {
 export type BibliographyData = Record<CitationKey, BibliographyItem>
 
 /* Blog */
-export { BlogListQuery, BlogPostQuery, TocItem }
+export { BlogListRecentQuery, BlogListForTagQuery, BlogPostQuery, TocItem }
 
 export type Frontmatter = NonNullable<BlogPostQuery['mdx']>['frontmatter']
 
 export interface PageContext {
+  tag?: string
   currentPage: number
   numPages: number
 }
 
-export type BlogEntryListData = Unpacked<BlogListQuery['allMdx']['nodes']>
+export type BlogEntryListData = Unpacked<BlogListRecentQuery['allMdx']['nodes']>
 
 export interface TableOfContents {
   items: (Pick<TocItem, 'title' | 'url'> & {

@@ -1,21 +1,19 @@
 import clsx from 'clsx'
 import { Link } from 'gatsby'
 import React from 'react'
-import { FaTags } from 'react-icons/fa'
 
 interface Props {
+  className?: string
   tags: string[]
 }
 
-const BlogPostTags: React.FC<Props> = ({ tags }) => {
+const BlogPostTags: React.FC<Props> = ({ tags, className }) => {
   if (tags.length === 0) {
     return <></>
   }
 
   return (
-    <div className={clsx('flex', 'flex-row', 'items-center')}>
-      {/* <FaTags className={clsx('mr-3')} /> */}
-      <span className="font-semibold mr-1">Tags:</span>
+    <div className={clsx('flex', 'flex-row', 'items-center', className)}>
       <ul className={clsx('')}>
         {tags?.map(tag => (
           <Tag tag={tag} key={tag} />
@@ -33,8 +31,12 @@ const Tag: React.FC<{ tag: string }> = ({ tag }) => {
         'border',
         'p-1',
         'mr-1',
+        'text-gray-600',
+        'font-semibold',
         'hover:bg-gray-200',
-        'no-underline'
+        'no-underline',
+        'hover:bg-primary-400',
+        'hover:text-gray-100'
       )}
       to={link}
     >
