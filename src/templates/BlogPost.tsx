@@ -60,14 +60,15 @@ const BlogPost: React.FC<Props> = ({ data }) => {
     <Layout>
       <SEO title={title} description={subtitle} article />
       <div className={clsx('flex', 'flex-row', 'justify-center', 'max-w-full')}>
-        <div className={clsx('max-w-4xl', 'flex', 'flex-row')}>
+        <div className={clsx('max-w-5xl', 'flex', 'flex-row')}>
           <div
             className={clsx(
               'sm:pr-4',
               'md:pr-6',
+              'py-6',
               'sm:w-2/3',
-              'lg:w-3/4',
-              'py-6'
+              'md:w-3/4',
+              'lg:w-4/5'
             )}
           >
             <BlogTitle className={clsx('mb-8')} frontmatter={frontmatter} />
@@ -86,15 +87,16 @@ const BlogPost: React.FC<Props> = ({ data }) => {
           </div>
           <Sidebar
             className={clsx(
-              'border-l-2',
-              'border-gray-400',
+              // 'border-l-2',
+              // 'border-gray-400',
               'h-screen',
               'sticky',
               'top-0',
               'hidden',
               'sm:block',
               'w-1/3',
-              'lg:w-1/4'
+              'md:w-1/4',
+              'lg:w-1/5'
             )}
             tableOfContents={tableOfContents}
           />

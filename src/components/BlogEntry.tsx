@@ -18,7 +18,7 @@ const BlogEntry: React.FC<BlogEntryProps> = ({ entry }) => {
       <Date
         isoString={date}
         dateFormat="MMM d, yyyy"
-        className={clsx('text-base', 'text-gray-600')}
+        className={clsx('text-base', 'font-semibold', 'text-gray-500')}
       />
       <div>
         <Link className={clsx('link')} to={slug}>

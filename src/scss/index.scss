@@ -18,6 +18,18 @@ html {
   }
 }
 
+.sidebar-link {
+  @apply text-sm text-gray-600 block;
+  @screen lg {
+    @apply text-base;
+  }
+}
+
+.active-sidebar-link {
+  @apply text-primary-600 border-l-2 border-primary-500 font-semibold;
+  margin-left: -2px;
+}
+
 pre {
   padding: 0 !important;
   max-width: 90vw;

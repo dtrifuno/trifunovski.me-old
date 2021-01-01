@@ -3735,70 +3735,22 @@ export type SitePluginPluginOptionsPostCssPluginsFutureFilterInput = {
 
 export type SitePluginPluginOptionsPostCssPluginsTheme = {
   colors?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColors>;
-  extend?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtend>;
 };
 
 export type SitePluginPluginOptionsPostCssPluginsThemeColors = {
-  transparent?: Maybe<Scalars['String']>;
-  current?: Maybe<Scalars['String']>;
-  black?: Maybe<Scalars['String']>;
   white?: Maybe<Scalars['String']>;
   gray?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsGray>;
-  red?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsRed>;
-  orange?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsOrange>;
-  yellow?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsYellow>;
-  green?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsGreen>;
-  teal?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsTeal>;
-  blue?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsBlue>;
-  indigo?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsIndigo>;
-  purple?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsPurple>;
-  pink?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsPink>;
   primary?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsPrimary>;
 };
 
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsBlue = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsBlueFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
 export type SitePluginPluginOptionsPostCssPluginsThemeColorsFilterInput = {
-  transparent?: Maybe<StringQueryOperatorInput>;
-  current?: Maybe<StringQueryOperatorInput>;
-  black?: Maybe<StringQueryOperatorInput>;
   white?: Maybe<StringQueryOperatorInput>;
   gray?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsGrayFilterInput>;
-  red?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsRedFilterInput>;
-  orange?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsOrangeFilterInput>;
-  yellow?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsYellowFilterInput>;
-  green?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsGreenFilterInput>;
-  teal?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsTealFilterInput>;
-  blue?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsBlueFilterInput>;
-  indigo?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsIndigoFilterInput>;
-  purple?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsPurpleFilterInput>;
-  pink?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsPinkFilterInput>;
   primary?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsPrimaryFilterInput>;
 };
 
 export type SitePluginPluginOptionsPostCssPluginsThemeColorsGray = {
+  _50?: Maybe<Scalars['String']>;
   _100?: Maybe<Scalars['String']>;
   _200?: Maybe<Scalars['String']>;
   _300?: Maybe<Scalars['String']>;
@@ -3811,102 +3763,7 @@ export type SitePluginPluginOptionsPostCssPluginsThemeColorsGray = {
 };
 
 export type SitePluginPluginOptionsPostCssPluginsThemeColorsGrayFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsGreen = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsGreenFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsIndigo = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsIndigoFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsOrange = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsOrangeFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsPink = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsPinkFilterInput = {
+  _50?: Maybe<StringQueryOperatorInput>;
   _100?: Maybe<StringQueryOperatorInput>;
   _200?: Maybe<StringQueryOperatorInput>;
   _300?: Maybe<StringQueryOperatorInput>;
@@ -3919,6 +3776,7 @@ export type SitePluginPluginOptionsPostCssPluginsThemeColorsPinkFilterInput = {
 };
 
 export type SitePluginPluginOptionsPostCssPluginsThemeColorsPrimary = {
+  _50?: Maybe<Scalars['String']>;
   _100?: Maybe<Scalars['String']>;
   _200?: Maybe<Scalars['String']>;
   _300?: Maybe<Scalars['String']>;
@@ -3931,6 +3789,7 @@ export type SitePluginPluginOptionsPostCssPluginsThemeColorsPrimary = {
 };
 
 export type SitePluginPluginOptionsPostCssPluginsThemeColorsPrimaryFilterInput = {
+  _50?: Maybe<StringQueryOperatorInput>;
   _100?: Maybe<StringQueryOperatorInput>;
   _200?: Maybe<StringQueryOperatorInput>;
   _300?: Maybe<StringQueryOperatorInput>;
@@ -3940,123 +3799,10 @@ export type SitePluginPluginOptionsPostCssPluginsThemeColorsPrimaryFilterInput =
   _700?: Maybe<StringQueryOperatorInput>;
   _800?: Maybe<StringQueryOperatorInput>;
   _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsPurple = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsPurpleFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsRed = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsRedFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsTeal = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsTealFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsYellow = {
-  _100?: Maybe<Scalars['String']>;
-  _200?: Maybe<Scalars['String']>;
-  _300?: Maybe<Scalars['String']>;
-  _400?: Maybe<Scalars['String']>;
-  _500?: Maybe<Scalars['String']>;
-  _600?: Maybe<Scalars['String']>;
-  _700?: Maybe<Scalars['String']>;
-  _800?: Maybe<Scalars['String']>;
-  _900?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeColorsYellowFilterInput = {
-  _100?: Maybe<StringQueryOperatorInput>;
-  _200?: Maybe<StringQueryOperatorInput>;
-  _300?: Maybe<StringQueryOperatorInput>;
-  _400?: Maybe<StringQueryOperatorInput>;
-  _500?: Maybe<StringQueryOperatorInput>;
-  _600?: Maybe<StringQueryOperatorInput>;
-  _700?: Maybe<StringQueryOperatorInput>;
-  _800?: Maybe<StringQueryOperatorInput>;
-  _900?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeExtend = {
-  maxWidth?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendMaxWidth>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeExtendFilterInput = {
-  maxWidth?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendMaxWidthFilterInput>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeExtendMaxWidth = {
-  _7xl?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPostCssPluginsThemeExtendMaxWidthFilterInput = {
-  _7xl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPostCssPluginsThemeFilterInput = {
   colors?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeColorsFilterInput>;
-  extend?: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendFilterInput>;
 };
 
 export type SitePluginSortInput = {

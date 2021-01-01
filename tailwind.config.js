@@ -1,4 +1,4 @@
-const { colors } = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   future: {
@@ -8,14 +8,11 @@ module.exports = {
   darkMode: false,
   theme: {
     colors: {
-      ...colors,
+      white: colors.white,
+      gray: colors.warmGray,
       primary: colors.orange,
     },
-    extend: {
-      maxWidth: {
-        '7xl': '80rem',
-      },
-    },
+    extend: {},
   },
   variants: {
     extend: {},

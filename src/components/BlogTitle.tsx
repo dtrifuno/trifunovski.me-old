@@ -32,7 +32,9 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
       <div className={clsx('text-gray-600', 'font-semibold', 'w-4/5')}>
         {dateLine}
       </div>
-      <h1 className={clsx('text-4xl', 'font-bold', 'leading-snug')}>{title}</h1>
+      <h1 className={clsx('text-4xl', 'font-bold', 'leading-snug', 'py-1')}>
+        {title}
+      </h1>
       <div
         className={clsx(
           'my-1',
@@ -44,7 +46,7 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
       >
         {subtitle}
       </div>
-      <BlogPostTags className={clsx('my-1')} tags={tags} />
+      <BlogPostTags className={clsx('my-2')} tags={tags} />
     </div>
   )
 }

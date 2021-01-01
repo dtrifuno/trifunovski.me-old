@@ -13,7 +13,7 @@ const IconBar: React.FC<Props> = ({ className }) => {
       className={clsx(
         'flex',
         'flex-row',
-        'text-gray-500',
+        'text-gray-400',
         'space-x-8',
         'md:space-x-4',
         className
@@ -26,28 +26,28 @@ const IconBar: React.FC<Props> = ({ className }) => {
         }}
       >
         <a
-          className={clsx('hover:text-primary-500')}
+          className={clsx('hover:text-primary-400')}
           href="https://github.com/dtrifuno"
           aria-label="Visit my GitHub profile"
         >
           <FaGithub />
         </a>
         <a
-          className={clsx('hover:text-primary-500')}
+          className={clsx('hover:text-primary-400')}
           href="https://www.linkedin.com/in/darko-trifunovski/"
           aria-label="Visit my LinkedIn profile"
         >
           <FaLinkedin />
         </a>
         <a
-          className={clsx('hover:text-primary-500')}
+          className={clsx('hover:text-primary-400')}
           href="https://twitter.com/dtrifuno"
           aria-label="Visit my Twitter profile"
         >
           <FaTwitter />
         </a>
         <a
-          className={clsx('hover:text-primary-500')}
+          className={clsx('hover:text-primary-400')}
           href="/rss.xml"
           aria-label="Subscribe to my RSS feed"
         >
