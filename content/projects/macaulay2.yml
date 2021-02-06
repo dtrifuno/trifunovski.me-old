@@ -1,0 +1,11 @@
+title: Macaulay2
+description: >
+  A software system devoted to supporting research in algebraic geometry and commutative algebra.
+
+  Macaulay2 includes core algorithms for computing Gröbner bases and graded or multi-graded free
+  resolutions of modules over quotient rings of graded or multi-graded polynomial rings with a monomial ordering.
+tags: ['C', 'CMake']
+#demo_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+github_url: 'https://github.com/Macaulay2/M2'
+priority: 2
+thumbnail: './macaulay2.jpg'

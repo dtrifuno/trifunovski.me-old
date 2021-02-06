@@ -1,0 +1,10 @@
+title: SageMath
+description: >
+  A Python-based open-source computer algebra system covering many aspects of mathematics,
+  including algebra, combinatorics, graph theory, numerical analysis, number theory, calculus
+  and statistics.
+tags: ['Python', 'Jupyter', 'Maxima', 'GAP']
+demo_url: 'https://sagecell.sagemath.org/'
+github_url: 'https://github.com/sagemath/sage'
+priority: 3
+thumbnail: './sage_math.png'

@@ -4,6 +4,8 @@ import clsx from 'clsx'
 import Footer from './Footer/'
 import Header from './Header/'
 
+const { footer: footerUrls } = require('../../config.js')
+
 import '../scss/index.scss'
 
 const Layout: React.FC = ({ children }) => {
@@ -20,7 +22,10 @@ const Layout: React.FC = ({ children }) => {
       <main className={clsx('mb-auto')}>
         <div className={clsx('px-6')}>{children}</div>
       </main>
-      <Footer className={clsx('border-t-2', 'border-primary-500')} />
+      <Footer
+        className={clsx('border-t-2', 'border-primary-500')}
+        footerUrls={footerUrls}
+      />
     </div>
   )
 }

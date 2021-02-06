@@ -2,11 +2,14 @@ import clsx from 'clsx'
 import React from 'react'
 import IconBar from './IconBar'
 
+import { FooterUrls } from '../../types'
+
 interface Props {
   className?: string
+  footerUrls: FooterUrls
 }
 
-const Footer: React.FC<Props> = ({ className }) => {
+const Footer: React.FC<Props> = ({ className, footerUrls }) => {
   return (
     <footer className={clsx(className)}>
       <div
@@ -42,7 +45,7 @@ const Footer: React.FC<Props> = ({ className }) => {
             .
           </div>
           <div className={clsx('my-3', 'md:my-4')}>
-            <IconBar />
+            <IconBar footerUrls={footerUrls} />
           </div>
         </div>
       </div>

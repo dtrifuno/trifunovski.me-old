@@ -1,0 +1,9 @@
+title: nLab
+description: >
+  A wiki for collaborative work on Mathematics, Physics and Philosophy — especially from the n-point of view:
+  in so far as these subjects are usefully treated with tools and notions of category theory or higher category theory.
+tags: ['Ruby', 'Instiki', 'MySQL']
+demo_url: 'https://ncatlab.org/nlab/show/HomePage'
+github_url: 'https://github.com/ncatlab/nlab'
+priority: 1
+thumbnail: './nlab.png'

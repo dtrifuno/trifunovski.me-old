@@ -69,6 +69,28 @@ export interface TableOfContents {
   })[]
 }
 
+/* Footer */
+export interface FooterUrls {
+  githubUrl?: string
+  gitlabUrl?: string
+  bitbucketUrl?: string
+  linkedinUrl?: string
+  stackExchangeUrl?: string
+  devUrl?: string
+  kaggleUrl?: string
+  hackerRankUrl?: string
+  freeCodeCampUrl?: string
+  facebookUrl?: string
+  twitterUrl?: string
+  instagramUrl?: string
+  vkontakteUrl?: string
+  twitchUrl?: string
+  soundcloudUrl?: string
+  youtubeUrl?: string
+  mediumUrl?: string
+  rss?: boolean | string
+}
+
 /* Projects */
 export { AllProjectsQuery }
 export type Project = Unpacked<AllProjectsQuery['allProjectsYaml']['nodes']>

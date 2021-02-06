@@ -3,18 +3,20 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+'use strict'
 
 const { macros } = require('./katex-macros')
+const config = require('./config')
 
 const siteMetadata = {
   title: `Home`,
   titleTemplate: `%s · Darko Trifunovski`,
   description: `Darko Trifunovski's personal website and blog.`,
-  siteUrl: `https://trifunovski.me`,
-  image: `/images/snape.jpg`, // Path to your image you placed in the 'static' folder
-  twitterUsername: `@dtrifuno`,
-  authorName: `Darko Trifunovski`,
-  siteLanguage: `en`,
+  siteUrl: config.siteUrl,
+  image: `/images/image.png`, // Path to your image you placed in the 'static' folder
+  twitterUsername: config.twitterUsername,
+  authorName: config.authorName,
+  siteLanguage: config.siteLanguage,
 }
 
 module.exports = {
@@ -97,10 +99,11 @@ module.exports = {
         exclude: [`/draft/*`],
       },
     },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
+    config.footer.rss === true
+      ? {
+          resolve: `gatsby-plugin-feed`,
+          options: {
+            query: `
           {
             site {
               siteMetadata {
@@ -112,19 +115,19 @@ module.exports = {
             }
           }
         `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.nodes.map(post => {
-                return Object.assign({}, post.frontmatter, {
-                  description: post.frontmatter.subtitle,
-                  date: post.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + post.fields.slug,
-                  guid: site.siteMetadata.siteUrl + post.fields.slug,
-                })
-              })
-            },
-            query: `
+            feeds: [
+              {
+                serialize: ({ query: { site, allMdx } }) => {
+                  return allMdx.nodes.map(post => {
+                    return Object.assign({}, post.frontmatter, {
+                      description: post.frontmatter.subtitle,
+                      date: post.frontmatter.date,
+                      url: site.siteMetadata.siteUrl + post.fields.slug,
+                      guid: site.siteMetadata.siteUrl + post.fields.slug,
+                    })
+                  })
+                },
+                query: `
               {
                 allMdx(
                   filter: { fields: { slug: { regex: "/^/post//" } } }
@@ -144,11 +147,12 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
-            title: `${siteMetadata.authorName}'s RSS Feed`,
+                output: '/rss.xml',
+                title: `${siteMetadata.authorName}'s RSS Feed`,
+              },
+            ],
           },
-        ],
-      },
-    },
-  ],
+        }
+      : false,
+  ].filter(x => x),
 }

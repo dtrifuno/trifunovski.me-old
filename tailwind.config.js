@@ -1,4 +1,8 @@
+'use strict'
+
 const colors = require('tailwindcss/colors')
+const config = require('./config')
+const themes = require('./themes')
 
 module.exports = {
   future: {
@@ -9,8 +13,7 @@ module.exports = {
   theme: {
     colors: {
       white: colors.white,
-      gray: colors.warmGray,
-      primary: colors.orange,
+      ...themes.themes[config.colorTheme],
     },
     extend: {},
   },
