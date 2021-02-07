@@ -9,16 +9,10 @@ import {
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
 
-/* Metadata */
-export { SiteMetadataQuery }
-export type SiteMetadata = NonNullable<
-  SiteMetadataQuery['site']
->['siteMetadata']
-
 /* Bibliography */
 export interface BibtexEntry {
   citationKey: CitationKey
-  entryType: 'book' | 'article' | 'misc'
+  entryType: 'book' | 'article' | 'misc' | 'incollection'
   entryTags: {
     author: string
     title: string
@@ -26,6 +20,7 @@ export interface BibtexEntry {
     chapter?: string
     edition?: string
     institution?: string
+    booktitle?: string
     journal?: string
     month?: string
     note?: string
@@ -36,6 +31,7 @@ export interface BibtexEntry {
     series?: string
     url?: string
     volume?: string
+    howpublished?: string
     year?: string
   }
 }
@@ -76,6 +72,12 @@ export type FooterUrls = {
 } & {
   readonly rss?: string | boolean
 }
+
+/* Metadata */
+export { SiteMetadataQuery }
+export type SiteMetadata = NonNullable<
+  SiteMetadataQuery['site']
+>['siteMetadata']
 
 /* Projects */
 export { AllProjectsQuery }

@@ -1,12 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-const config = require('./config')
-
-const countBy = require('lodash/countBy')
-const sortBy = require('lodash/sortBy')
-const flatMap = require('lodash/flatMap')
-const toPairs = require('lodash/toPairs')
 const { createFilePath } = require('gatsby-source-filesystem')
+const bibtexParse = require('@orcid/bibtex-parse-js')
+const _ = require('lodash')
+
+const config = require('./config')
 
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes, createFieldExtension } = actions
@@ -162,15 +160,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // create tags page
-  const countsByTag = countBy(
-    flatMap(
+  const countsByTag = _.countBy(
+    _.flatMap(
       publishedPostsResult.data.allMdx.nodes,
       post => post.frontmatter.tags
     )
   )
-  const countPairs = toPairs(countsByTag)
-  const sortedPairs = sortBy(
-    sortBy(countPairs, pair => pair[0]),
+  const countPairs = _.toPairs(countsByTag)
+  const sortedPairs = _.sortBy(
+    _.sortBy(countPairs, pair => pair[0]),
     pair => -1 * pair[1]
   )
   createPage({
@@ -182,9 +180,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // create tags pages
-  console.log(sortedPairs)
   sortedPairs.forEach(([tag, numPosts]) => {
-    console.log(tag, numPosts)
     const numPages = Math.ceil(numPosts / postsPerPage)
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
@@ -212,6 +208,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       ) {
         nodes {
           id
+          frontmatter {
+            bibliography {
+              absolutePath
+            }
+          }
           fields {
             slug
           }
@@ -226,6 +227,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = allPostsResult.data.allMdx.nodes
   posts.forEach((post, index) => {
+    if (post.frontmatter.bibliography) {
+      const bibliographyPath = post.frontmatter.bibliography.absolutePath
+      const bibliographyData = fs.readFileSync(bibliographyPath, 'utf8')
+      const parsedBibliography = bibtexParse.toJSON(bibliographyData)
+      const bibliography = parsedBibliography.map(bibItem => ({
+        ...bibItem,
+        entryTags: _.mapKeys(bibItem.entryTags, (_, key) => _.lowerCase(key)),
+      }))
+      console.log(bibliography)
+    }
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)

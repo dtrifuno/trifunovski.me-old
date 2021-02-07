@@ -66,7 +66,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-yaml`,
     `gatsby-plugin-sharp`,
-    // gatsby-remark-images should be run both as plugin of gatsby-plugin-mdx and gatsby itself, do not use one to set options
+    // gatsby-remark-images should be run both as plugin of gatsby-plugin-mdx and gatsby itself, use other one to set options
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,

@@ -16,6 +16,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.21",
     "@mdx-js/react": "^1.6.21",
+    "@orcid/bibtex-parse-js": "^0.0.25",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^9",
