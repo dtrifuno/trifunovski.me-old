@@ -27,26 +27,27 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
       )}
     </div>
   )
+
   return (
     <div className={clsx('flex', 'flex-col', className)}>
-      <div className={clsx('text-gray-600', 'font-semibold', 'w-4/5')}>
-        {dateLine}
-      </div>
-      <h1 className={clsx('text-4xl', 'font-bold', 'leading-snug', 'py-1')}>
+      <BlogPostTags className={clsx('mt-2')} tags={tags} />
+      <h1 className={clsx('text-5xl', 'font-bold', 'leading-snug', 'mb-1')}>
         {title}
       </h1>
       <div
         className={clsx(
-          'my-1',
-          'lg:my-2',
-          'text-xl',
-          'lg:text-2xl',
-          'leading-relaxed'
+          'text-sm',
+          'sm:text-base',
+          'text-gray-600',
+          'font-semibold',
+          'w-4/5'
         )}
       >
+        {dateLine}
+      </div>
+      <div className={clsx('my-1', 'text-xl', 'leading-relaxed')}>
         {subtitle}
       </div>
-      <BlogPostTags className={clsx('my-2')} tags={tags} />
     </div>
   )
 }

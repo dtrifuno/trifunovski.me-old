@@ -6,8 +6,16 @@ module.exports = {
   siteLanguage: `en`,
   colorTheme: `blue`, // valid themes: orange, blue, red, green, purple
 
-  postsPerPage: 8, // set to 0 to disable pagination
   projectStyle: `detailed`, // TODO: disregard, only "detailed" is implemented atm
+
+  postsPerPage: 8, // set to 0 to disable pagination
+
+  copyrightNoticeHtml: `Darko Trifunovski © 2020&ndash;2021. Built with Gatsby&mdash;source code available on
+<a
+  class="link"
+  href="https://github.com/dtrifuno/trifunovski.me"
+>Github</a>.
+`,
 
   // footer icons will appear in the order in which they are defined here
   footer: {
@@ -23,6 +31,8 @@ module.exports = {
     facebookUrl: undefined,
     twitterUrl: `https://twitter.com/dtrifuno`,
     instagramUrl: undefined,
+    redditUrl: undefined,
+    hackernewsUrl: undefined,
     vkontakteUrl: undefined,
     twitchUrl: undefined,
     soundcloudUrl: undefined,

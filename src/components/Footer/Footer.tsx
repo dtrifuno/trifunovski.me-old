@@ -10,6 +10,7 @@ interface Props {
 }
 
 const Footer: React.FC<Props> = ({ className, footerUrls }) => {
+  const config = require('../../../config')
   return (
     <footer className={clsx(className)}>
       <div
@@ -33,17 +34,10 @@ const Footer: React.FC<Props> = ({ className, footerUrls }) => {
               'mb-2',
               'md:mb-0'
             )}
-          >
-            Darko Trifunovski © 2020&ndash;2021. Built with Gatsby&mdash;source
-            code available on{' '}
-            <a
-              className={clsx('link')}
-              href="https://github.com/dtrifuno/trifunovski.me"
-            >
-              Github
-            </a>
-            .
-          </div>
+            dangerouslySetInnerHTML={{
+              __html: config.copyrightNoticeHtml as string,
+            }}
+          />
           <div className={clsx('my-3', 'md:my-4')}>
             <IconBar footerUrls={footerUrls} />
           </div>

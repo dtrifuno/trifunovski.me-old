@@ -11,7 +11,7 @@ const ProjectsPage: React.FC = () => {
   return (
     <Layout>
       <SEO title="Projects" />
-      <div className={clsx('my-3')}>
+      <div className={clsx('my-3', 'md:my-5')}>
         <div className={clsx('max-w-4xl', 'mx-auto')}>
           <h2
             className={clsx(

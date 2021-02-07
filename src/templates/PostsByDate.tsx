@@ -41,7 +41,7 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
         </ul>
         {numPages !== 1 ? (
           <Paginator url="/posts" pageContext={pageContext} />
-        ) : null}
+        ) : undefined}
       </div>
     </Layout>
   )

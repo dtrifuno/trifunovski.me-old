@@ -40,7 +40,7 @@ const BlogList: React.FC<Props> = ({ pageContext, data }) => {
         </ul>
         {numPages !== 1 ? (
           <Paginator url={`/tag/${tag}`} pageContext={pageContext} />
-        ) : null}
+        ) : undefined}
       </div>
     </Layout>
   )

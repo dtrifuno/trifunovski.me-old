@@ -1,5 +1,7 @@
 const fs = require('fs')
 const path = require('path')
+const config = require('./config')
+
 const countBy = require('lodash/countBy')
 const sortBy = require('lodash/sortBy')
 const flatMap = require('lodash/flatMap')
@@ -144,7 +146,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // create recent posts pages
   const numPublishedPosts = publishedPostsResult.data.allMdx.nodes.length
-  const postsPerPage = 8
+  const postsPerPage = config.postsPerPage ? config.postsPerPage : 999999
   const numPages = Math.ceil(numPublishedPosts / postsPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
