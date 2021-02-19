@@ -227,16 +227,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = allPostsResult.data.allMdx.nodes
   posts.forEach((post, index) => {
+    let bibliography
     if (post.frontmatter.bibliography) {
       const bibliographyPath = post.frontmatter.bibliography.absolutePath
       const bibliographyData = fs.readFileSync(bibliographyPath, 'utf8')
       const parsedBibliography = bibtexParse.toJSON(bibliographyData)
-      const bibliography = parsedBibliography.map(bibItem => ({
+      bibliography = parsedBibliography.map(bibItem => ({
         ...bibItem,
-        entryTags: _.mapKeys(bibItem.entryTags, (_, key) => _.lowerCase(key)),
+        entryTags: _.mapKeys(bibItem.entryTags, (val, key) => _.lowerCase(key)),
       }))
-      console.log(bibliography)
     }
+    console.log(post.fields.slug)
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
@@ -245,7 +246,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve(`./src/templates/BlogPost.tsx`),
       // You can use the values in this context in
       // our page layout component
-      context: { id: post.id },
+      context: { id: post.id, bibliography },
     })
   })
 }

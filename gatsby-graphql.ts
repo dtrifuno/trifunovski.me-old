@@ -2507,6 +2507,8 @@ export type QuerySiteArgs = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2669,6 +2671,8 @@ export type Site = Node & {
   siteMetadata: SiteSiteMetadata;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
+  polyfill?: Maybe<Scalars['Boolean']>;
+  pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -2876,6 +2880,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteLanguage'
   | 'port'
   | 'host'
+  | 'polyfill'
+  | 'pathPrefix'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2968,6 +2974,8 @@ export type SiteFilterInput = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3028,6 +3036,61 @@ export type SitePageContext = {
   currentPage?: Maybe<Scalars['Int']>;
   tag?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
+  bibliography?: Maybe<Array<Maybe<SitePageContextBibliography>>>;
+};
+
+export type SitePageContextBibliography = {
+  citationKey?: Maybe<Scalars['String']>;
+  entryType?: Maybe<Scalars['String']>;
+  entryTags?: Maybe<SitePageContextBibliographyEntryTags>;
+};
+
+export type SitePageContextBibliographyEntryTags = {
+  author?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  howpublished?: Maybe<Scalars['String']>;
+  note?: Maybe<Scalars['String']>;
+  year?: Maybe<Scalars['Date']>;
+  series?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Scalars['String']>;
+  pages?: Maybe<Scalars['String']>;
+  booktitle?: Maybe<Scalars['String']>;
+  journal?: Maybe<Scalars['String']>;
+  fjournal?: Maybe<Scalars['String']>;
+  volume?: Maybe<Scalars['String']>;
+};
+
+
+export type SitePageContextBibliographyEntryTagsYearArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextBibliographyEntryTagsFilterInput = {
+  author?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  howpublished?: Maybe<StringQueryOperatorInput>;
+  note?: Maybe<StringQueryOperatorInput>;
+  year?: Maybe<DateQueryOperatorInput>;
+  series?: Maybe<StringQueryOperatorInput>;
+  publisher?: Maybe<StringQueryOperatorInput>;
+  pages?: Maybe<StringQueryOperatorInput>;
+  booktitle?: Maybe<StringQueryOperatorInput>;
+  journal?: Maybe<StringQueryOperatorInput>;
+  fjournal?: Maybe<StringQueryOperatorInput>;
+  volume?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextBibliographyFilterInput = {
+  citationKey?: Maybe<StringQueryOperatorInput>;
+  entryType?: Maybe<StringQueryOperatorInput>;
+  entryTags?: Maybe<SitePageContextBibliographyEntryTagsFilterInput>;
+};
+
+export type SitePageContextBibliographyFilterListInput = {
+  elemMatch?: Maybe<SitePageContextBibliographyFilterInput>;
 };
 
 export type SitePageContextFilterInput = {
@@ -3037,6 +3100,7 @@ export type SitePageContextFilterInput = {
   currentPage?: Maybe<IntQueryOperatorInput>;
   tag?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
+  bibliography?: Maybe<SitePageContextBibliographyFilterListInput>;
 };
 
 export type SitePageEdge = {
@@ -3058,6 +3122,21 @@ export type SitePageFieldsEnum =
   | 'context___currentPage'
   | 'context___tag'
   | 'context___id'
+  | 'context___bibliography'
+  | 'context___bibliography___citationKey'
+  | 'context___bibliography___entryType'
+  | 'context___bibliography___entryTags___author'
+  | 'context___bibliography___entryTags___title'
+  | 'context___bibliography___entryTags___howpublished'
+  | 'context___bibliography___entryTags___note'
+  | 'context___bibliography___entryTags___year'
+  | 'context___bibliography___entryTags___series'
+  | 'context___bibliography___entryTags___publisher'
+  | 'context___bibliography___entryTags___pages'
+  | 'context___bibliography___entryTags___booktitle'
+  | 'context___bibliography___entryTags___journal'
+  | 'context___bibliography___entryTags___fjournal'
+  | 'context___bibliography___entryTags___volume'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'

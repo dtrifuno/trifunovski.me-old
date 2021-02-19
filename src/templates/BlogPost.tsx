@@ -2,17 +2,18 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import clsx from 'clsx'
 
-import { BlogPostQuery } from '../types'
-
 import { MDXProvider, MDXProviderComponents } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/Layout'
 import BlogTitle from '../components/BlogTitle'
 import SmartLink from '../components/SmartLink'
 import Sidebar from '../components/Sidebar'
-import BlogPostTags from '../components/BlogPostTags'
 import SEO from '../components/SEO'
 import SyntaxHighlighter from '../components/SyntaxHighlighter'
+
+import { processBibliography } from '../components/bibliography/dmtalpha'
+
+import { BlogPostQuery, BibtexEntry } from '../types'
 
 const components: MDXProviderComponents = {
   h1: ({ children, className, ...props }) => (
@@ -50,35 +51,32 @@ const components: MDXProviderComponents = {
 
 interface Props {
   data: BlogPostQuery
+  pageContext: {
+    id: string
+    bibliography?: BibtexEntry[]
+  }
 }
 
-const BlogPost: React.FC<Props> = ({ data }) => {
+const BlogPost: React.FC<Props> = ({ data, pageContext }) => {
   const { tableOfContents, body, frontmatter } = data.mdx!
-  const { title, subtitle, tags } = frontmatter
+  const { title, subtitle } = frontmatter
+  const { bibliography } = pageContext
 
   return (
     <Layout>
       <SEO title={title} description={subtitle} article />
-      <div className={clsx('flex', 'flex-row', 'justify-center', 'max-w-full')}>
-        <div className={clsx('max-w-5xl', 'flex', 'flex-row')}>
+      <div className={clsx('flex flex-row justify-center max-w-full')}>
+        <div className={clsx('max-w-5xl flex flex-row')}>
           <div
             className={clsx(
-              'sm:pr-4',
-              'md:pr-6',
               'py-6',
-              'sm:w-2/3',
-              'md:w-3/4',
-              'lg:w-4/5'
+              'sm:pr-4 md:pr-6',
+              'sm:w-2/3 md:w-3/4 lg:w-4/5'
             )}
           >
             <BlogTitle className={clsx('mb-8')} frontmatter={frontmatter} />
             <div
-              className={clsx(
-                'prose',
-                'prose-primary',
-                'md:prose-lg',
-                'max-w-none'
-              )}
+              className={clsx('prose prose-primary md:prose-lg', 'max-w-none')}
             >
               <MDXProvider components={components}>
                 <MDXRenderer>{body}</MDXRenderer>
@@ -87,21 +85,16 @@ const BlogPost: React.FC<Props> = ({ data }) => {
           </div>
           <Sidebar
             className={clsx(
-              // 'border-l-2',
-              // 'border-gray-400',
-              'h-screen',
-              'sticky',
-              'top-0',
-              'hidden',
-              'sm:block',
-              'w-1/3',
-              'md:w-1/4',
-              'lg:w-1/5'
+              'h-screen sticky top-0',
+              'hidden sm:block',
+              'w-1/3 md:w-1/4 lg:w-1/5'
             )}
             tableOfContents={tableOfContents}
           />
         </div>
       </div>
+      {/* <div>{JSON.stringify(bibliography)}</div> */}
+      <div>{JSON.stringify(processBibliography(bibliography))}</div>
     </Layout>
   )
 }
@@ -128,34 +121,6 @@ export const pageQuery = graphql`
         tags
         last_updated
       }
-      # fields {
-      #   bibliography {
-      #     citationKey
-      #     entryType
-      #     entryTags {
-      #       # Required
-      #       author
-      #       title
-      #       # Optional
-      #       address
-      #       chapter
-      #       edition
-      #       edition
-      #       institution
-      #       journal
-      #       month
-      #       note
-      #       number
-      #       pages
-      #       publisher
-      #       school
-      #       series
-      #       url
-      #       volume
-      #       year
-      #     }
-      #   }
-      # }
     }
   }
 `

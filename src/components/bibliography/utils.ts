@@ -1,6 +1,13 @@
 import _ from 'lodash'
+import katex from 'katex'
+import { v4 as uuidv4 } from 'uuid'
 
-import { BibtexEntry } from '../../types'
+import {
+  BibtexEntry,
+  BibliographyItem,
+  BibliographyData,
+  HTMLString,
+} from '../../types'
 
 interface Author {
   firstName?: string
@@ -35,6 +42,9 @@ const parseAuthorName = (name: string): Author => {
   }
 }
 
+export const parseAuthors = (authors: string): Author[] =>
+  authors.split(' and ').map(parseAuthorName)
+
 const extractShortInitial = ({ lastName }: Author): string =>
   _.flatMap(lastName.split(/ /), x => x.split(/-/))
     .map(x => x[0])
@@ -48,7 +58,7 @@ const extractLongInitial = ({ lastName }: Author): string => {
   return lastName.slice(0, 3)
 }
 
-const createCandidateLabel = (entry: BibtexEntry): string => {
+export const createCandidateLabel = (entry: BibtexEntry): string => {
   const { year, author: authorString } = entry.entryTags
   const authors = authorString
     .split(' and ')
@@ -64,4 +74,64 @@ const createCandidateLabel = (entry: BibtexEntry): string => {
   }
 
   return `${initials}${year ? year.slice(-2) : ''}`
+}
+
+// TODO: Handle \url{}?
+export const renderText = (text?: string): HTMLString | undefined => {
+  if (!text) {
+    return undefined
+  }
+
+  // render content between $s using KaTeX
+  const katexElems: any = {}
+  const textWithTaggedKatex = text
+    .split(/((?<!\\)\$.*?\$(?!\\))/)
+    .map(substring => {
+      const matchLatex = substring.match(/^\$(.*)\$$/)
+      if (matchLatex) {
+        const uuid = 'katex-elem-' + uuidv4()
+        katexElems[uuid] = katex.renderToString(matchLatex[1], {
+          throwOnError: false,
+        })
+        return uuid
+      }
+      return substring
+    })
+    .join('')
+    .replace(/\\\$/g, '$')
+
+  // we won't change capitalization, so we can strip out unescaped brace pairs
+  const textWithStrippedBraces = textWithTaggedKatex
+    .split(/((?<!\\){.*?}(?!\\))/)
+    .map(substring => {
+      const matchBraces = substring.match(/^{(.*)}$/)
+      return matchBraces ? matchBraces[0] : substring
+    })
+    .join('')
+    .replace(/\\\{/g, '{')
+    .replace(/\\\}/g, '}')
+
+  let result = textWithStrippedBraces
+  for (const [uuid, katexElem] of Object.entries(katexElems)) {
+    result = result.replace(new RegExp(uuid, 'g'), katexElem as string)
+  }
+  return result
+}
+
+export const indexToAlphaSuffix = (index: number): string => {
+  if (index < 26) {
+    return String.fromCharCode(97 + index)
+  }
+
+  let result = ''
+  let remainder
+  while (index >= 26) {
+    remainder = index % 26
+    index = Math.trunc(index / 26)
+    result = String.fromCharCode(97 + remainder) + result
+  }
+  if (index) {
+    result = String.fromCharCode(96 + index) + result
+  }
+  return result
 }

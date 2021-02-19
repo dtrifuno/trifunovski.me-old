@@ -134,6 +134,6 @@ export const createLinkedIcons = (footerUrls: FooterUrls) => {
         </a>
       )
     })
-    .filter(x => x)
+    .filter(Boolean)
   return linkedIcons
 }

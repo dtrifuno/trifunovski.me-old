@@ -154,5 +154,5 @@ module.exports = {
           },
         }
       : false,
-  ].filter(x => x),
+  ].filter(Boolean),
 }
