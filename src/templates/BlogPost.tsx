@@ -10,6 +10,8 @@ import SmartLink from '../components/SmartLink'
 import Sidebar from '../components/Sidebar'
 import SEO from '../components/SEO'
 import SyntaxHighlighter from '../components/SyntaxHighlighter'
+import Bibliography from '../components/bibliography/Bibliography'
+import Cite from '../components/bibliography/Cite'
 
 import { processBibliography } from '../components/bibliography/dmtalpha'
 
@@ -53,7 +55,7 @@ interface Props {
   data: BlogPostQuery
   pageContext: {
     id: string
-    bibliography?: BibtexEntry[]
+    bibliography: BibtexEntry[]
   }
 }
 
@@ -61,6 +63,11 @@ const BlogPost: React.FC<Props> = ({ data, pageContext }) => {
   const { tableOfContents, body, frontmatter } = data.mdx!
   const { title, subtitle } = frontmatter
   const { bibliography } = pageContext
+
+  const bibliographyData = processBibliography(bibliography)
+  const cite = ({ citationKey }: { citationKey: string }) => (
+    <Cite citationKey={citationKey} bibliographyData={bibliographyData} />
+  )
 
   return (
     <Layout>
@@ -78,8 +85,9 @@ const BlogPost: React.FC<Props> = ({ data, pageContext }) => {
             <div
               className={clsx('prose prose-primary md:prose-lg', 'max-w-none')}
             >
-              <MDXProvider components={components}>
+              <MDXProvider components={{ ...components, cite }}>
                 <MDXRenderer>{body}</MDXRenderer>
+                <Bibliography bibliographyData={bibliographyData} />
               </MDXProvider>
             </div>
           </div>
@@ -93,8 +101,6 @@ const BlogPost: React.FC<Props> = ({ data, pageContext }) => {
           />
         </div>
       </div>
-      {/* <div>{JSON.stringify(bibliography)}</div> */}
-      <div>{JSON.stringify(processBibliography(bibliography))}</div>
     </Layout>
   )
 }

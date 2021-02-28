@@ -17,6 +17,7 @@
     "@mdx-js/mdx": "^1.6.21",
     "@mdx-js/react": "^1.6.21",
     "@orcid/bibtex-parse-js": "^0.0.25",
+    "@popperjs/core": "^2.8.0",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^9",
@@ -49,6 +50,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.1.0",
+    "react-popper": "^2.2.4",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "uuid": "^8.3.2"
   },

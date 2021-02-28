@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 
-import { BibliographyData, CitationKey } from '../../types'
+import { BibliographyData, CitationKey } from './types'
 import { Link } from 'gatsby'
 
 interface CiteProps {
@@ -10,12 +10,23 @@ interface CiteProps {
 }
 
 const Cite: React.FC<CiteProps> = ({ bibliographyData, citationKey }) => {
-  const { label, elem } = bibliographyData[citationKey]
-  return (
-    <span>
-      [<Link to={`#cite-key-${citationKey}`}>{label}</Link>]
-    </span>
-  )
+  const entry = bibliographyData[citationKey]
+  console.log(bibliographyData)
+  if (entry) {
+    return (
+      <span>
+        <Link to={`#cite-key-${citationKey}`}>[{entry.label}]</Link>
+      </span>
+    )
+  } else {
+    return (
+      <span>
+        <strong style={{ color: 'red' }}>
+          {`ERROR: Cannot find citation key ${citationKey} in bibliography.]`}
+        </strong>
+      </span>
+    )
+  }
 }
 
 export default Cite

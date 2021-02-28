@@ -3049,8 +3049,8 @@ export type SitePageContextBibliographyEntryTags = {
   author?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   howpublished?: Maybe<Scalars['String']>;
-  note?: Maybe<Scalars['String']>;
   year?: Maybe<Scalars['Date']>;
+  note?: Maybe<Scalars['String']>;
   series?: Maybe<Scalars['String']>;
   publisher?: Maybe<Scalars['String']>;
   pages?: Maybe<Scalars['String']>;
@@ -3058,6 +3058,7 @@ export type SitePageContextBibliographyEntryTags = {
   journal?: Maybe<Scalars['String']>;
   fjournal?: Maybe<Scalars['String']>;
   volume?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
 };
 
 
@@ -3072,8 +3073,8 @@ export type SitePageContextBibliographyEntryTagsFilterInput = {
   author?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   howpublished?: Maybe<StringQueryOperatorInput>;
-  note?: Maybe<StringQueryOperatorInput>;
   year?: Maybe<DateQueryOperatorInput>;
+  note?: Maybe<StringQueryOperatorInput>;
   series?: Maybe<StringQueryOperatorInput>;
   publisher?: Maybe<StringQueryOperatorInput>;
   pages?: Maybe<StringQueryOperatorInput>;
@@ -3128,8 +3129,8 @@ export type SitePageFieldsEnum =
   | 'context___bibliography___entryTags___author'
   | 'context___bibliography___entryTags___title'
   | 'context___bibliography___entryTags___howpublished'
-  | 'context___bibliography___entryTags___note'
   | 'context___bibliography___entryTags___year'
+  | 'context___bibliography___entryTags___note'
   | 'context___bibliography___entryTags___series'
   | 'context___bibliography___entryTags___publisher'
   | 'context___bibliography___entryTags___pages'
@@ -3137,6 +3138,7 @@ export type SitePageFieldsEnum =
   | 'context___bibliography___entryTags___journal'
   | 'context___bibliography___entryTags___fjournal'
   | 'context___bibliography___entryTags___volume'
+  | 'context___bibliography___entryTags___url'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'

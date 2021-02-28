@@ -1,16 +1,18 @@
 import _ from 'lodash'
 
-import { BibliographyData, BibtexEntry, HTMLString } from '../../types'
+import { HtmlString } from '../../types'
+import * as bibtypes from './types'
+
 import {
-  parseAuthors,
+  parsePeople,
   createCandidateLabel,
   renderText,
   indexToAlphaSuffix,
 } from './utils'
 
 export const processBibliography = (
-  entries: BibtexEntry[]
-): BibliographyData => {
+  entries: bibtypes.BibtexEntry[]
+): bibtypes.BibliographyData => {
   entries = entries ?? []
   const entriesWithCandidateLabels = entries.map(entry => ({
     ...entry,
@@ -20,16 +22,12 @@ export const processBibliography = (
   const labeledEntries = _.flatten(
     _.values(
       _.mapValues(_.groupBy(entriesWithCandidateLabels, 'label'), arr =>
-        _.sortBy(arr, entry => [entry.entryTags.title]).map((entry, index) => {
-          if (arr.length === 1) {
-            return entry
-          } else {
-            return {
-              ...entry,
-              label: entry.label + indexToAlphaSuffix(index),
-            }
-          }
-        })
+        _.sortBy(arr, entry => [entry.entryTags.title]).map((entry, index) => ({
+          ...entry,
+          label: `${entry.label}${
+            arr.length > 1 ? indexToAlphaSuffix(index) : ''
+          }`,
+        }))
       )
     )
   )
@@ -39,21 +37,30 @@ export const processBibliography = (
     elem: createHtmlElem(entry),
     citationKey: entry.citationKey,
   }))
-  return _.keyBy(processedData, 'label')
+  return _.keyBy(processedData, 'citationKey')
 }
 
-const createHtmlElem = (entry: BibtexEntry): HTMLString => {
-  if (entry.entryType === 'article') {
-    return createArticleHtmlElem(entry)
-  } else if (entry.entryType === 'book') {
-    return createBookHtmlElem(entry)
-  } else if (entry.entryType === 'incollection') {
-    return createIncollectionHtmlElem(entry)
+const createHtmlElem = (entry: bibtypes.BibtexEntry): HtmlString => {
+  const typeToCreateHtmlElemFunc = {
+    article: createArticleHtmlElem,
+    book: createBookHtmlElem,
+    booklet: createBookletHtmlElem,
+    inbook: createInBookHtmlElem,
+    incollection: createInCollectionHtmlElem,
+    inproceedings: createInProceedingsHtmlElem,
+    manual: createManualHtmlElem,
+    mastersthesis: createThesisHtmlElem,
+    misc: createMiscHtmlElem,
+    phdthesis: createThesisHtmlElem,
+    proceedings: createProceedingsHtmlElem,
+    techreport: createTechReportHtmlElem,
+    unpublished: createUnpublishedHtmlElem,
   }
-  return createMiscHtmlElem(entry)
+  const createHtmlElemFunc = typeToCreateHtmlElemFunc[entry.entryType]
+  return createHtmlElemFunc(entry as any)
 }
 
-const createArticleHtmlElem = (entry: BibtexEntry): HTMLString => {
+const createArticleHtmlElem = (entry: bibtypes.Article): HtmlString => {
   const { journal, volume, year, number, pages, note } = entry.entryTags
   return (
     [
@@ -67,7 +74,7 @@ const createArticleHtmlElem = (entry: BibtexEntry): HTMLString => {
         .filter(Boolean)
         .join(' '),
       number ? `no. ${number}` : undefined,
-      pages,
+      renderText(pages),
       renderText(note),
     ]
       .filter(Boolean)
@@ -75,7 +82,7 @@ const createArticleHtmlElem = (entry: BibtexEntry): HTMLString => {
   )
 }
 
-const createBookHtmlElem = (entry: BibtexEntry): HTMLString => {
+const createBookHtmlElem = (entry: bibtypes.Book): HtmlString => {
   const {
     edition,
     series,
@@ -88,7 +95,9 @@ const createBookHtmlElem = (entry: BibtexEntry): HTMLString => {
   } = entry.entryTags
   return (
     [
-      createAuthorsHtml(entry),
+      bibtypes.entryHasAuthor(entry)
+        ? createAuthorsHtml(entry)
+        : createEditorsHtml(entry as bibtypes.BibtexEntryWithEditor),
       createTitleHtml(entry),
       edition ? `${edition} ed.` : undefined,
       renderText(series),
@@ -103,7 +112,25 @@ const createBookHtmlElem = (entry: BibtexEntry): HTMLString => {
   )
 }
 
-const createMiscHtmlElem = (entry: BibtexEntry): HTMLString => {
+const createBookletHtmlElem = (entry: bibtypes.Booklet): HtmlString => {}
+
+const createInBookHtmlElem = (entry: bibtypes.InBook): HtmlString => {}
+
+const createInCollectionHtmlElem = (
+  entry: bibtypes.InCollection
+): HtmlString => {}
+
+const createInProceedingsHtmlElem = (
+  entry: bibtypes.InProceedings
+): HtmlString => {}
+
+const createManualHtmlElem = (entry: bibtypes.Manual): HtmlString => {}
+
+const createThesisHtmlElem = (
+  entry: bibtypes.MastersThesis | bibtypes.PhdThesis
+): HtmlString => {}
+
+const createMiscHtmlElem = (entry: bibtypes.Misc): HtmlString => {
   const { howpublished, month, year, note } = entry.entryTags
   return (
     [
@@ -118,29 +145,49 @@ const createMiscHtmlElem = (entry: BibtexEntry): HTMLString => {
   )
 }
 
-const createIncollectionHtmlElem = (entry: BibtexEntry): HTMLString => {
-  return ''
-}
+const createProceedingsHtmlElem = (
+  entry: bibtypes.Proceedings
+): HtmlString => {}
 
-const createAuthorsHtml = (entry: BibtexEntry): HTMLString => {
-  const authorNames = parseAuthors(entry.entryTags.author).map(author =>
+const createTechReportHtmlElem = (entry: bibtypes.TechReport): HtmlString => {}
+
+const createUnpublishedHtmlElem = (
+  entry: bibtypes.Unpublished
+): HtmlString => {}
+
+const createPeopleString = (people: Person[]): string => {
+  const names = people.map(author =>
     [author.firstName, author.lastName].filter(Boolean).join(' ')
   )
-  if (authorNames.length === 1) {
-    return authorNames[0]
-  } else if (authorNames.length === 2) {
-    return `${authorNames[0]} and ${authorNames[1]}`
+
+  if (names.length === 1) {
+    return names[0]
+  } else if (names.length === 2) {
+    return `${names[0]} and ${names[1]}`
   } else {
-    return (
-      authorNames.slice(0, -1).join(', ') + `, and ${authorNames.slice(-1)[0]}`
-    )
+    return names.slice(0, -1).join(', ') + `, and ${names.slice(-1)[0]}`
   }
 }
 
-const createTitleHtml = (entry: BibtexEntry): HTMLString => {
+const createEditorsHtml = (
+  entry: bibtypes.BibtexEntryWithEditor
+): HtmlString => {
+  const editors = parsePeople(entry.entryTags.editor)
+  const edSuffix = `(ed${editors.length > 1 ? 's' : ''})`
+  return `${createPeopleString(editors)} ${edSuffix}`
+}
+
+const createAuthorsHtml = (
+  entry: bibtypes.BibtexEntryWithAuthor
+): HtmlString => {
+  const authors = parsePeople(entry.entryTags.author)
+  return createPeopleString(authors)
+}
+
+const createTitleHtml = (entry: bibtypes.BibtexEntry): HtmlString => {
   const { url, title } = entry.entryTags
 
-  let result = renderText(title) as string
+  let result = `<span class="italic">${renderText(title)}</span>` as string
   if (url) {
     return `<a href="${url}">${result}</a>`
   }

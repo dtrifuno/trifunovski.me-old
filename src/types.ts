@@ -9,42 +9,10 @@ import {
 
 type Unpacked<T> = T extends (infer U)[] ? U : T
 
-/* Bibliography */
-export interface BibtexEntry {
-  citationKey: CitationKey
-  entryType: 'book' | 'article' | 'misc' | 'incollection'
-  entryTags: {
-    author: string
-    title: string
-    address?: string
-    chapter?: string
-    edition?: string
-    institution?: string
-    booktitle?: string
-    journal?: string
-    month?: string
-    note?: string
-    number?: string
-    pages?: string
-    publisher?: string
-    school?: string
-    series?: string
-    url?: string
-    volume?: string
-    howpublished?: string
-    year?: string
-  }
-}
+/** A string representing valid HTML. */
+export type HtmlString = string
 
-export type CitationKey = string
-export type BibliographyLabel = string
-export type HTMLString = string
-export type BibliographyItem = {
-  label: BibliographyLabel
-  citationKey: CitationKey
-  elem: HTMLString
-}
-export type BibliographyData = Record<CitationKey, BibliographyItem>
+/* Bibliography */
 
 /* Blog */
 export { BlogListRecentQuery, BlogListForTagQuery, BlogPostQuery, TocItem }
