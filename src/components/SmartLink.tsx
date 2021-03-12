@@ -1,12 +1,12 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
-interface Props {
+export interface SmartLinkProps {
   href: string
   className?: string
 }
 
-const SmartLink: React.FC<Props> = ({ href, children, ...props }) => {
+const SmartLink: React.FC<SmartLinkProps> = ({ href, children, ...props }) => {
   return href.startsWith('/') ? (
     <Link to={href} {...props}>
       {children}

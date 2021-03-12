@@ -3,11 +3,11 @@ import _ from 'lodash'
 
 import { BibliographyData, BibliographyItem } from './types'
 
-interface Props {
+export interface BibliographyProps {
   bibliographyData: BibliographyData
 }
 
-const Bibliography: React.FC<Props> = ({ bibliographyData }) => {
+const Bibliography: React.FC<BibliographyProps> = ({ bibliographyData }) => {
   const sortedItems = _.sortBy(_.values(bibliographyData), item =>
     _.lowerCase(item?.label)
   ) as BibliographyItem[]

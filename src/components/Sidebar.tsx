@@ -4,12 +4,12 @@ import { Link } from 'gatsby'
 import { TableOfContents } from '../types'
 import clsx from 'clsx'
 
-interface Props {
+export interface SidebarProps {
   className?: string
   tableOfContents: TableOfContents
 }
 
-const Sidebar: React.FC<Props> = ({ className, tableOfContents }) => {
+const Sidebar: React.FC<SidebarProps> = ({ className, tableOfContents }) => {
   return (
     <div className={className}>
       <div>

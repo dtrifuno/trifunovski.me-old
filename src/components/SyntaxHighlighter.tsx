@@ -4,11 +4,14 @@ import theme from 'prism-react-renderer/themes/github'
 
 type Language = React.ComponentProps<typeof Highlight>['language']
 
-interface Props {
+export interface SyntaxHighlighterProps {
   className: string
 }
 
-const SyntaxHighlighter: React.FC<Props> = ({ children, className }) => {
+const SyntaxHighlighter: React.FC<SyntaxHighlighterProps> = ({
+  children,
+  className,
+}) => {
   const code = children as string
   if (!className || !className.includes('language-')) {
     return <div className="non-prism-code">{code}</div>

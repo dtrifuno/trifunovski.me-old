@@ -86,12 +86,15 @@ const Tag: React.FC = ({ children }) => {
   )
 }
 
-interface Props {
+export interface ProjectCardProps {
   project: Project
   reversed?: boolean
 }
 
-const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  reversed = false,
+}) => {
   const { title, description, tags, github_url, demo_url } = project
   const { fluid } = project.thumbnail.childImageSharp as any
 
@@ -106,13 +109,10 @@ const ProjectCard: React.FC<Props> = ({ project, reversed = false }) => {
           <div className={clsx('lg:w-6/12', 'lg:p-0', 'p-7')}>
             <h2
               className={clsx(
-                'text-2xl',
-                'md:text-3xl',
-                'lg:text-2xl',
+                'text-2xl md:text-3xl lg:text-2xl',
                 'font-bold',
                 'leading-tight',
-                'my-0',
-                'lg:my-2',
+                'my-0 lg:my-2',
                 'capitalize',
                 'text-center',
                 'lg:text-left'

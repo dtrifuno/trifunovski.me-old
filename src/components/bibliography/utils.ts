@@ -2,22 +2,9 @@ import _ from 'lodash'
 import katex from 'katex'
 import { v4 as uuidv4 } from 'uuid'
 
-import { HtmlString } from '../../types'
+import { HTMLString } from '../../types'
 
-import {
-  BibtexEntry,
-  BibliographyItem,
-  BibliographyData,
-  entryHasAuthor,
-  entryHasEditor,
-} from './types'
-
-interface Person {
-  firstName?: string
-  lastName: string
-}
-
-type Author = Person
+import { BibtexEntry, entryHasAuthor, entryHasEditor, Person } from './types'
 
 /** Parses a name.
  * @param fullName - A string of the form "lastName1 lastName2 ..., firstName1 ..."
@@ -55,12 +42,12 @@ const parsePerson = (fullName: string): Person => {
 export const parsePeople = (people: string): Person[] =>
   people.split(/\s*,?\s+and\s*,?\s+/).map(x => parsePerson(x.trim()))
 
-const extractShortInitial = ({ lastName }: Author): string =>
+const extractShortInitial = ({ lastName }: Person): string =>
   _.flatMap(lastName.split(/ /), x => x.split(/-/))
     .map(x => x[0])
     .join('')
 
-const extractLongInitial = ({ lastName }: Author): string => {
+const extractLongInitial = ({ lastName }: Person): string => {
   const shortInitial = extractShortInitial({ lastName })
   if (shortInitial.length > 1) {
     return shortInitial
@@ -98,13 +85,13 @@ export const createCandidateLabel = (entry: BibtexEntry): string => {
   return `${initials}${year ? year.slice(-2) : ''}`
 }
 
-export const renderText = (text?: string): HtmlString | undefined => {
+export const renderText = (text?: string): HTMLString | undefined => {
   if (!text) {
     return undefined
   }
 
   // replace content between $$ with placeholders and render using KaTeX
-  const uuidToElem: Record<string, HtmlString> = {}
+  const uuidToElem: Record<string, HTMLString> = {}
   const textWithTaggedKatex = text
     .split(/((?<!\\)\$.*?\$(?!\\))/)
     .map(substring => {

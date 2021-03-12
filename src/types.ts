@@ -10,7 +10,7 @@ import {
 type Unpacked<T> = T extends (infer U)[] ? U : T
 
 /** A string representing valid HTML. */
-export type HtmlString = string
+export type HTMLString = string
 
 /* Bibliography */
 

@@ -3,13 +3,17 @@ import { Link } from 'gatsby'
 import React from 'react'
 import { PageContext } from '../types'
 
-interface Props {
+interface PaginatorProps {
   className?: string
   url: string
   pageContext: PageContext
 }
 
-const Paginator: React.FC<Props> = ({ pageContext, url, className }) => {
+const Paginator: React.FC<PaginatorProps> = ({
+  pageContext,
+  url,
+  className,
+}) => {
   const { currentPage, numPages } = pageContext
 
   let nextLink = undefined

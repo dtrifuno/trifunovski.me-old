@@ -2,13 +2,13 @@ import React from 'react'
 import { parseISO, format } from 'date-fns'
 import clsx from 'clsx'
 
-interface Props {
+export interface DateProps {
   isoString: string
   className?: string
   dateFormat?: string
 }
 
-const Date: React.FC<Props> = ({
+const Date: React.FC<DateProps> = ({
   isoString,
   className,
   dateFormat = 'MMMM d, yyyy',

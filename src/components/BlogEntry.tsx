@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import { BlogEntryListData } from '../types'
 import Date from '../components/Date'
 
-interface BlogEntryProps {
+export interface BlogEntryProps {
   entry: BlogEntryListData
 }
 

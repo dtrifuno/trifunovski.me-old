@@ -1,7 +1,12 @@
+export interface Person {
+  firstName?: string
+  lastName: string
+}
+
 /** The BibTeX label of an item. */
 export type CitationKey = string
 
-import { HtmlString } from '../../types'
+import { HTMLString } from '../../types'
 
 export type BibliographyLabel = string
 
@@ -9,8 +14,9 @@ export type BibliographyLabel = string
 export type BibliographyItem = {
   label: BibliographyLabel
   citationKey: CitationKey
-  elem: HtmlString
+  elem: HTMLString
 }
+
 export type BibliographyData = Record<CitationKey, BibliographyItem | undefined>
 
 /** A parsed BibTeX entry. */
@@ -32,6 +38,7 @@ export type BibtexEntry =
 export type BibtexEntryWithAuthor = BibtexEntry & {
   entryTags: { author: string }
 }
+
 export type BibtexEntryWithEditor = BibtexEntry & {
   entryTags: { editor: string }
 }
@@ -39,13 +46,13 @@ export type BibtexEntryWithEditor = BibtexEntry & {
 export const entryHasAuthor = (
   entry: BibtexEntry
 ): entry is BibtexEntryWithAuthor => {
-  return Boolean((entry as BibtexEntryWithAuthor).entryTags.author)
+  return (entry as BibtexEntryWithAuthor).entryTags.author != undefined
 }
 
 export const entryHasEditor = (
   entry: BibtexEntry
 ): entry is BibtexEntryWithEditor => {
-  return Boolean((entry as BibtexEntryWithEditor).entryTags.editor)
+  return (entry as BibtexEntryWithEditor).entryTags.editor != undefined
 }
 
 /** A supported BibTeX entry type. */
@@ -150,6 +157,7 @@ export type InCollection = {
     pages?: string
     edition?: string
     month?: string
+    address?: string
     url?: string
     note?: string
   }

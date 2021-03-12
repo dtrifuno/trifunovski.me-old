@@ -5,12 +5,12 @@ import { Frontmatter } from '../types'
 import Date from './Date'
 import BlogPostTags from './BlogPostTags'
 
-interface Props {
+export interface BlogTitleProps {
   frontmatter: Frontmatter
   className?: string
 }
 
-const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
+const BlogTitle: React.FC<BlogTitleProps> = ({ frontmatter, className }) => {
   const { title, date, subtitle, last_updated, tags } = frontmatter
   const dateLine = (
     <div>
@@ -36,8 +36,7 @@ const BlogTitle: React.FC<Props> = ({ frontmatter, className }) => {
       </h1>
       <div
         className={clsx(
-          'text-sm',
-          'sm:text-base',
+          'text-sm sm:text-base',
           'text-gray-600',
           'font-semibold',
           'w-4/5'

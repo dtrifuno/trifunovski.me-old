@@ -1,16 +1,17 @@
 import React from 'react'
 import { useLocation } from '@reach/router'
-import useSiteMetadata from '../hooks/useSiteMetadata'
 import { Helmet } from 'react-helmet'
 
-interface Props {
+import useSiteMetadata from '../hooks/useSiteMetadata'
+
+export interface SEOProps {
   title?: string
   article?: boolean
   description?: string | null
   image?: string
 }
 
-const SEO: React.FC<Props> = props => {
+const SEO: React.FC<SEOProps> = props => {
   const { article, title, description, image } = props
   const { pathname } = useLocation()
   const {
